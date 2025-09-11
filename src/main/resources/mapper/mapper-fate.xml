@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper-fate">
-	<select id="selectResultFate" parameterType="int" resultType="lx.edu.springboot.vo.ResultFateVO">
-		select id,
-			   user_name userName,
-			   max_five maxFive,
-			   tree,
-			   fire,
-			   soil,
-			   gold,
-			   water,
-			   total_fate totalFate,
-			   love_fate loveFate,
-			   money_fate moneyFate,
-			   health_fate healthFate,
-			   job_fate jobFate
-		from result_fate
-		where id = #{id}
+	<select id="selectResultFate" parameterType="int" resultType="lx.edu.springboot.vo.FateResultVO">
+		select RESULTFATE_ID resultFateId,
+ 				USER_NAME userName,
+            	MAXFIVE maxFive,
+            	TREE tree,
+            	FIRE fire,
+            	SOIL soil,
+            	STEEL steel,
+            	WATER water,
+            	TOTAL total,
+            	LOVE love,
+           		MONEY money,
+            	HEALTH health,
+            	JOB job
+		from resultfate
+		where RESULTFATE_ID = #{resultFateId}
 	</select>
 	
-	<select id="selectEachResultFate" parameterType="String" resultType="String">
-		select ${fate_name} from result_fate
+	<select id="selectEachResultFate" parameterType="map" resultType="String">
+		select ${fate_name} from resultfate where RESULTFATE_ID = #{resultFateId}
 	</select>
 
-	<insert id="insertInputFate" parameterType="lx.edu.springboot.vo.InputFateVO">
-		insert into input_fate(user_name, birth_date, birth_time, gender)
-			   values(#{userName}, #{birthDate}, #{birthTime}, #{gender})
+	<insert id="insertInputFate" parameterType="lx.edu.springboot.vo.FateInputVO">
+		insert into inputfate(USER_NAME, USER_BIRTH, USER_TIME, USER_GENDER)
+        VALUES(#{userName}, #{userBirth}, #{userTime}, #{userGender})
 	</insert>
 
-	<insert id="insertResultFate" parameterType="lx.edu.springboot.vo.ResultFateVO">
-		insert into result_fate(user_name, max_five, tree, fire, soil, gold, water, total_fate, love_fate, money_fate,
-								health_fate, job_fate)
-			   values(#{user_name}, #{max_five}, #{tree}, #{fire}, #{soil}, #{gold}, #{water}, #{total_fate},
-			   #{love_fate}, #{money_fate}, #{health_fate}, #{job_fate})
+	<insert id="insertResultFate" parameterType="lx.edu.springboot.vo.FateResultVO">
+		 INSERT INTO resultfate(USER_NAME, MAXFIVE, TREE, FIRE, SOIL, STEEL, WATER, TOTAL, LOVE, MONEY, HEALTH, JOB, INPUTFATE_ID, INPUTFATE_INPUTFATE_ID1)
+        VALUES(#{userName}, #{maxFive}, #{tree}, #{fire}, #{soil}, #{steel}, #{water}, #{total}, #{love}, #{money}, #{health}, #{job}, #{inputFateId}, #{inputFateId})
 	</insert>
 </mapper>

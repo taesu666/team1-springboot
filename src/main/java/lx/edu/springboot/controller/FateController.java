@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lx.edu.springboot.dao.FateDAO;
-import lx.edu.springboot.vo.InputFateVO;
+import lx.edu.springboot.vo.FateInputVO;
 
 @Controller
 public class FateController {
@@ -24,7 +24,7 @@ public class FateController {
 	}
 	
 	@RequestMapping("/insert_fate_input.do")
-	public String insert(InputFateVO vo) throws Exception { //Spring에서는 이렇게 사용 가능!
+	public String insert(FateInputVO vo) throws Exception {
 		System.out.println(vo);
 		dao.insertInputFate(vo);
 		//여기서 insertResultFate()까지 실행
