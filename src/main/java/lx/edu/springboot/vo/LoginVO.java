@@ -35,6 +35,4 @@ public class LoginVO {
 		this.userName = userName;
 	}
 	
-	
-
 }
