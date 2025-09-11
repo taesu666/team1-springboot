@@ -14,7 +14,7 @@ public class GeminiController {
     private GeminiService geminiService;
 
     @GetMapping("/gemini")
-    public String gemini(@RequestParam(defaultValue = "오늘 날씨 알려줘") String prompt, Model model) {
+    public String gemini(@RequestParam(defaultValue = "안녕?") String prompt, Model model) {
         String result = geminiService.generate(prompt);
         model.addAttribute("result", result);
         model.addAttribute("prompt", prompt);
