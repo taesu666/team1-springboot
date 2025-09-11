@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>사주 -input</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div align="center">
+	<form name=form1 method=post action="insert_fate_input.do">
+		<table border="1">
+			<tr>
+				<th>이 름</th>	
+				<td><input type="text" name="userName" maxlength="15"></td>
+			</tr>
+			<tr>
+				<th>태어난 날</th>
+		    	<td><input type="text" name="birthDate" maxlength="50"></td>
+			</tr>
+			<tr>
+			    <th>시간</th>
+			    <td><input type="text" name="birthTime" maxlength="20"></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td><input type="text" name="gender"></td>
+			</tr>  		
+			<tr>
+				<td colspan=2 align=center><input type=submit value="저장"><input type=reset value="취소"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
