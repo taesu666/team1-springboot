@@ -3,13 +3,13 @@ package lx.edu.springboot.vo;
 public class CoupleInputVO {
     private int inputCoupleId;
     private String userName;
-    private java.sql.Date userBirth;
+    private String userBirth;
     private String userGender;
-    private java.sql.Date userTime;
+    private String userTime;
     private String partnerName;
-    private java.sql.Date partnerBirth;
+    private String partnerBirth;
     private String partnerGender;
-    private java.sql.Date partnerTime;
+    private String partnerTime;
 
     // getter/setter
     public int getInputCoupleId() {
@@ -24,10 +24,10 @@ public class CoupleInputVO {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    public java.sql.Date getUserBirth() {
+    public String getUserBirth() {
         return userBirth;
     }
-    public void setUserBirth(java.sql.Date userBirth) {
+    public void setUserBirth(String userBirth) {
         this.userBirth = userBirth;
     }
     public String getUserGender() {
@@ -36,10 +36,10 @@ public class CoupleInputVO {
     public void setUserGender(String userGender) {
         this.userGender = userGender;
     }
-    public java.sql.Date getUserTime() {
+    public String getUserTime() {
         return userTime;
     }
-    public void setUserTime(java.sql.Date userTime) {
+    public void setUserTime(String userTime) {
         this.userTime = userTime;
     }
     public String getPartnerName() {
@@ -48,10 +48,10 @@ public class CoupleInputVO {
     public void setPartnerName(String partnerName) {
         this.partnerName = partnerName;
     }
-    public java.sql.Date getPartnerBirth() {
+    public String getPartnerBirth() {
         return partnerBirth;
     }
-    public void setPartnerBirth(java.sql.Date partnerBirth) {
+    public void setPartnerBirth(String partnerBirth) {
         this.partnerBirth = partnerBirth;
     }
     public String getPartnerGender() {
@@ -60,10 +60,10 @@ public class CoupleInputVO {
     public void setPartnerGender(String partnerGender) {
         this.partnerGender = partnerGender;
     }
-    public java.sql.Date getPartnerTime() {
+    public String getPartnerTime() {
         return partnerTime;
     }
-    public void setPartnerTime(java.sql.Date partnerTime) {
+    public void setPartnerTime(String partnerTime) {
         this.partnerTime = partnerTime;
     }
 	@Override
