@@ -23,39 +23,14 @@
 		<H2>사주 결과 보여주는 화면</H2>
 		<HR>
 		<p>
-		<form name=form1 method=post action="update.do">
-			<input type=hidden name="abId" th:value="${ab.abId}"> <input
-				type=hidden name="action" value="update">
 
 			<table border="1">
 				<tr>
 					<th>이 름</th>
-					<td><input type="text" name="abName" th:value="${ab.abName}"></td>
+					<td><input type="text" name="userName" th:value="${result.resultfateID}"></td>
 				</tr>
-				<tr>
-					<th>email</th>
-					<td><input type="text" name="abEmail" th:value="${ab.abEmail}"></td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td><input type="text" name="abTel" th:value="${ab.abTel}"></td>
-				</tr>
-				<tr>
-					<th>생 일</th>
-					<td><input type="date" name="abBirth" th:value="${ab.abBirth}"></td>
-				</tr>
-				<tr>
-					<th>회 사</th>
-					<td><input type="text" name="abComdept"
-						th:value="${ab.abComdept}"></td>
-				</tr>
-				<tr>
-					<th>메 모</th>
-					<td><input type="text" name="abMemo" th:value="${ab.abMemo}"></td>
-				</tr>
-
+			
 			</table>
-		</form>
 
 	</div>
 </body>

@@ -69,41 +69,9 @@ public class ConversationController {
     // 개별 사주 결과 상세 페이지
     @GetMapping("/conversation_result_fate.do")
     public String resultFate(@RequestParam("resultfateId") int resultfateId, Model model) {
-        ConversationVO vo = dao.getDBById(resultfateId);
+        ConversationVO vo = dao.selectFateDBlist(resultfateId);
         model.addAttribute("result", vo);
         return "conversation_result_fate";
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	// 수정화면
-	@RequestMapping("edit.do")
-	public ModelAndView edit(@RequestParam("abId")int abId) {
-		ModelAndView result = new ModelAndView();
-		ConversationVO vo = dao.getDBById(abId);   // DAO에서 단일 조회
-		result.addObject("ab", vo);
-		result.setViewName("addrbook_edit_form");
-		return result;
-	}
-	
-	@RequestMapping("update.do")
-	public String update(ConversationVO vo) throws Exception {
-		dao.updateDB(vo);
-		return "redirect:addrbook_list.do";
-	}
-
-	
 
 }

@@ -21,18 +21,11 @@ public class ConversationDAO {
 	public List<ConversationVO> getDBList() throws Exception {
 		return session.selectList("getDBList");
 	}
-	
-	public ConversationVO getDBById(int resultfateID) {
-		return session.selectOne("getDBById", resultfateID);
+
+	public ConversationVO selectFateDBlist(int resultfateId) {
+		return session.selectOne("selectFateDBlist", resultfateId);
 	}
-	
-	public int updateDB(ConversationVO ab) throws Exception {
-		return session.update("updateDB", ab);
-	}
-	
-	public boolean deleteDB(int abId) throws Exception {
-		return false;
-	}
+
 
 
 }
