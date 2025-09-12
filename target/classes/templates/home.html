@@ -1,35 +1,43 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<link rel="stylesheet" href="/css/home.css" type="text/css" media="screen" />
-		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>사주세요:홈화면</title>
+<!-- 	<link rel="stylesheet" href="/css/home.css" type="text/css" media="screen" />
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+ -->		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+		<title>사주세요:홈</title>
+
+		<!-- 공통 스타일 -->
+		<th:block th:replace="~{fragments/styles :: commonStyles}"></th:block>
 	</head>
 	
 	<body>
-		<div align="center"> 
-			<H2>사주세요:홈화면</H2>
-			<HR>
-			<form>
-				<a href=""></a><P>
-			
-				<table border="1">
-					<tr><th>번호</th><th>이 름</th><th>전화번호</th><th>생 일</th><th>회 사</th><th>메 모</th></tr>
-					
-					 
-					<tr th:each="vo : ${data}">
-						<td><a th:href="|javascript:check(${vo.abId})|" th:text="${vo.abId}"></a></td>
-						<td th:text="${vo.abName}"></td>
-						<td th:text="${vo.abTel}"></td>
-						<td th:text="${vo.abBirth}"></td>
-						<td th:text="${vo.abComdept}"></td>
-						<td th:text="${vo.abMemo}"></td>
-					</tr>
-					 
-				</table>
-			</form>
+		<!-- 헤더 -->
+		<div th:replace="fragments/header :: headerFragment"></div>
+
+		<div class="col-12 d-flex flex-column align-items-center"> 
+			<!-- 로고 -->
+			<H2>사주세요:홈</H2>
+			<div class="col-8 d-flex flex-column border border-primary align-items-center padding-3">
+				<img th:src="@{/image/logo.png}" width="40%">
+			</div>
+
+			<!-- 메뉴 버튼 -->
+			<div class="col-8 d-flex flex-row border border-danger justify-content-evenly">
+				<button class="" href="/">사주 보기</button>
+				<button class=""href="/">궁합 보기</button>
+
+			</div>
+			<div class="d-flex flex-row">
+				
+			</div>
+			<div class="d-flex flex-row">
+			</div>
 		</div>
 
 	</body>
+	
+
 </html>
