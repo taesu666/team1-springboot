@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-travel">
+	<select id="selectTravelDB" parameterType="int"
+		resultType="lx.myproject.vo.TravelVO">
+		select travel_id
+		,maxFive
+		,travel_name
+		,travel_location
+		,travel_description
+		,travel_image
+		,bad
+		from travel
+		where travel_id = #{travelId}
+	</select>
+	<select id="getMaxFiveByResultFateId" parameterType="int"
+		resultType="string">
+		SELECT maxFive
+		FROM travel
+		WHERE resultfate_id = 1 
+	</select>
+	<select id="getRecommendedByMaxFive" parameterType="string"
+		resultType="lx.myproject.vo.TravelVO">
+		SELECT 
+			travel_name,
+			travel_location,
+			travel_description,
+			travel_image
+		FROM travel
+		WHERE maxFive = #{maxFive}
+		limit 3
+	</select>
+	<select id="getBadByMaxFive" parameterType="string"
+		resultType="string">
+		SELECT 
+			bad
+		FROM travel
+		WHERE maxFive = #{maxFive}
+		limit 1
+	</select>
+	<select id="getAvoidByBad" parameterType="string"
+		resultType="lx.myproject.vo.TravelVO">
+		SELECT 
+			travel_name,
+			travel_location,
+			travel_description,
+			travel_image
+		FROM travel
+		WHERE maxFive = #{bad}
+		limit 3
+	</select>
+	<!-- 유저이름 추가시
+	<select id="getUserNameByResultFateId" parameterType="int"
+		resultType="string">
+		select travel_user_name
+		from travel
+		where user_name = #{userName}
+	</select>
+	 --> 
+
+</mapper>
