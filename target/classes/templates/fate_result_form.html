@@ -2,17 +2,33 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>사주 - result</title>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
-	        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
-	        crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div align="center">
 		<h2>사주 result</h2>
 		<p>username: <span th:text="${resultVO.userName}"></span></p>
+		<p>tree: <span th:text="${resultVO.tree}"></span></p>
+		<p>fire: <span th:text="${resultVO.fire}"></span></p>
+		<p>soil: <span th:text="${resultVO.soil}"></span></p>
+		<p>steel: <span th:text="${resultVO.steel}"></span></p>
+		<p>water: <span th:text="${resultVO.water}"></span></p>
 		<p>total: <span th:text="${resultVO.total}"></span></p>
 		
-		<a th:href="@{/home.do}">홈으로</a>
+		<form action="fate_detail.do" method="get">
+		    <select name="fateOption" id="fateOption" onchange="this.form.submit()">
+		        <option value="love">연애운</option>
+		        <option value="health">건강운</option>
+		        <option value="money">재물운</option>
+		        <option value="job">직업운</option>			
+		    </select>
+		</form>
+		
+		<p th:if="${detail != null}">
+			<p>운세 결과:</p> <span th:text="${detail}"></span>
+		</p>
+		<a href="home.do">홈으로</a>
 	</div>
 </body>
+
 </html>

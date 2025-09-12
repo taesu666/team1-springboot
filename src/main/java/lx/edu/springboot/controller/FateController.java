@@ -4,9 +4,11 @@ package lx.edu.springboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lx.edu.springboot.dao.FateDAO;
+import lx.edu.springboot.service.FateService;
 import lx.edu.springboot.service.GeminiService;
 import lx.edu.springboot.vo.FateInputVO;
 import lx.edu.springboot.vo.FateResultVO;
@@ -20,6 +22,9 @@ public class FateController {
 	@Autowired
 	private GeminiService geminiService;
 	
+	@Autowired
+	private FateService fateService;
+	
 	@RequestMapping("/fate_input_form.do")
 	public String fateInputForm() {
 		return "fate_input_form";
@@ -30,25 +35,7 @@ public class FateController {
         System.out.println(inputVO);
         dao.insertInputFate(inputVO);
 
-        String prompt = String.format(
-                "사용자 이름: %s, 생년월일: %s, 시간: %s, 성별: %s를 기반으로 오행 몇개인지랑, 총운, 건강운, 직업운, 연애운, 재물운 사주를 분석해줘.",
-                inputVO.getUserName(),
-                inputVO.getUserBirth(),
-                inputVO.getUserTime(),
-                inputVO.getUserGender()
-        );
-
-        // Google AI 호출
-        String aiResult = geminiService.generate(prompt);
-
-        FateResultVO resultVO = new FateResultVO();
-        resultVO.setUserName(inputVO.getUserName());
-        resultVO.setTotal(aiResult);
-
-        // 오행, 연애운.. 이런거 각각 어떻게 담을지 고민고민중
-        // 아직 테스트 안해봄
-        
-        // 모델에 담아서 insert_fate_result.do로 넘김
+        FateResultVO resultVO = fateService.fateGenerate(inputVO);      
         req.setAttribute("resultVO", resultVO);
 
         return "forward:/insert_fate_result.do"; 
@@ -56,16 +43,50 @@ public class FateController {
 
 
     @RequestMapping("/insert_fate_result.do")
-    public String insertResult(FateResultVO resultVO) throws Exception {
+    public String insertResult(FateResultVO resultVO, HttpServletRequest req) throws Exception {
         dao.insertResultFate(resultVO);
+        req.setAttribute("id", resultVO.getResultFateId());
         return "fate_result_form";
     }
     
 	
 	@RequestMapping("/fate_result_form.do")
-	public String fateResultForm() {
+	public String fateResultForm(Integer id, HttpServletRequest req) throws Exception {
+		id = 1;
+		FateResultVO resultVO = dao.selectResultFate(id);
+		req.setAttribute("resultVO", resultVO);
+		req.setAttribute("detail", resultVO.getLove());
 		return "fate_result_form";
 	}
+	
+	@RequestMapping("/fate_detail.do")
+	public String fateDetail(@RequestParam("fateOption") String type, HttpServletRequest req) {
+	    FateResultVO result = dao.selectResultFate(1);
+	    
+	    String detail = "";
+	    switch (type) {
+	        case "love":
+	            detail = result.getLove();
+	            break;
+	        case "health":
+	            detail = result.getHealth();
+	            break;
+	        case "money":
+	            detail = result.getMoney();
+	            break;
+	        case "job":
+	            detail = result.getJob();
+	            break;
+	    }
+	    
+	    // detail 저장
+	    req.setAttribute("resultVO", result);
+	    req.setAttribute("detail", detail);
+	    
+	    // redirect 말고 forward
+	    return "fate_result_form"; 
+	}
+
 	
 	@RequestMapping("/gemini.do")
 	public String home() {
