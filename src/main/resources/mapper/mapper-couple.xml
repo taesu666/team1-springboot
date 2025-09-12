@@ -9,6 +9,19 @@
 		ab_birth abBirth, ab_tel abTel, ab_memo abMemo from addrbook where ab_id 
 		= #{abId} </select> -->
 	<!-- public boolean insertDB(AddrBookVO ab) throws Exception { -->
+	
+	<!-- 궁합인원 정보 couple_input db에 저장 -->
+	<insert id="insertCoupleInputDB"
+		parameterType="lx.edu.springboot.vo.CoupleInputVO"
+		>
+		INSERT INTO project1.inputcouple
+		(USER_NAME,USER_BIRTH,USER_GENDER,USER_TIME, PARTNER_NAME, PARTNER_BIRTH, PARTNER_GENDER, PARTNER_TIME)
+		VALUES
+		(#{userName}, #{userBirth}, #{userGender}, #{userTime}, #{partnerName},  #{partnerBirth}, #{partnerGender}, #{partnerTime}
+		)
+	</insert>
+	
+	<!-- 궁합결과 couple_result db에 저장 -->
 	<insert id="insertCoupleResultDB"
 		parameterType="lx.edu.springboot.vo.CoupleResultVO"
 		>
@@ -19,15 +32,6 @@
 		)
 	</insert>
 	
-	<insert id="insertCoupleInputDB"
-		parameterType="lx.edu.springboot.vo.CoupleInputVO"
-		>
-		INSERT INTO project1.inputcouple
-		(USER_NAME,USER_BIRTH,USER_GENDER,USER_TIME, PARTNER_NAME, PARTNER_BIRTH, PARTNER_GENDER, PARTNER_TIME)
-		VALUES
-		(#{userName}, #{userBirth}, #{userGender}, #{userTime}, #{partnerName},  #{partnerBirth}, #{partnerGender}, #{partnerTime}
-		)
-	</insert>
 
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 
 		ab_id = #{abId} </delete> -->

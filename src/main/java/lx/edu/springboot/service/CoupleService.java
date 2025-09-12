@@ -19,7 +19,7 @@ public class CoupleService {
     public CoupleResultVO analyzeCouple(String userName, String userBirth, String userGender, String userTime,
                                         String partnerName, String partnerBirth, String partnerGender, String partnerTime) {
         String prompt = String.format("%s,%s, %s, 태어난시간 %s 출생과 %s,%s, %s, 태어난시간 %s 출생의 두사람을 생년월일과 이름 기준 궁합풀이 해줘. "
-                + "꼭 순수 JSON만 반환하고, "
+                + "꼭 순수 JSON만 반환하고, 총평, 연애운, 동업운 전부 700자 이상으로 해줘"
                 + "필수 키: 종합_궁합_점수, 종합_궁합_총평, 연애운, 동업운."
                 + "연애운과 동업운 값은 '점수'를 빼고, 텍스트 설명만 JSON에 포함시켜."
                 +"\"정태수_김준하_궁합\": {\r\n"
