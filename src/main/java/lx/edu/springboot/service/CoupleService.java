@@ -4,7 +4,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lx.edu.springboot.client.GoogleAiClient;
-import lx.edu.springboot.dao.CoupleResultDAO;
+import lx.edu.springboot.dao.CoupleDAO;
+
 import lx.edu.springboot.vo.CoupleResultVO;
 
 @Service
@@ -13,7 +14,7 @@ public class CoupleService {
     GoogleAiClient googleAiClient;
 
     @Autowired
-    CoupleResultDAO coupleResultDAO;
+    CoupleDAO coupleDAO;
 
     public CoupleResultVO analyzeCouple(String userName, String userBirth, String userGender, String userTime,
                                         String partnerName, String partnerBirth, String partnerGender, String partnerTime) {
@@ -89,7 +90,7 @@ public class CoupleService {
         coupleResult.setLove(love);
         coupleResult.setPartner(partner);
 
-        coupleResultDAO.insertCoupleResult(coupleResult);
+        coupleDAO.insertCoupleResult(coupleResult);
 
         return coupleResult;
     }

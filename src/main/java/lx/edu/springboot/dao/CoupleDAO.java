@@ -5,11 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import lx.edu.springboot.vo.CoupleInputVO;
+import lx.edu.springboot.vo.CoupleResultVO;
 
 
 @Repository
 
-public class CoupleInputDAO {
+public class CoupleDAO {
 	
 
 	@Autowired
@@ -17,6 +18,11 @@ public class CoupleInputDAO {
 	
 	public int insertCoupleInput(CoupleInputVO civ) {
 		return session.insert("insertCoupleInputDB", civ); 
+	}
+
+	
+	public int insertCoupleResult(CoupleResultVO crv) {
+		return session.insert("insertCoupleResultDB", crv); 
 	}
 
 }

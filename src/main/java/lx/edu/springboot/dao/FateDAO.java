@@ -30,12 +30,5 @@ public class FateDAO {
 		return session.selectOne("selectResultFate", inputId);
 	}
 
-	public String selectEachResultFate(String fate_name, int inputId){
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("fate_name", fate_name); // 컬럼 이름
-	    params.put("resultFateId", inputId); // 조건 ID
-		return session.selectOne("selectEachResultFate", params);
-	}
-
 	
 }

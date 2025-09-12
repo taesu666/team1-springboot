@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model; 
-import lx.edu.springboot.dao.CoupleInputDAO;
-import lx.edu.springboot.dao.CoupleResultDAO;
+import lx.edu.springboot.dao.CoupleDAO;
 import lx.edu.springboot.service.CoupleService;
 import lx.edu.springboot.vo.CoupleInputVO;
 import lx.edu.springboot.vo.CoupleResultVO;
@@ -16,10 +15,9 @@ import lx.edu.springboot.vo.CoupleResultVO;
 public class CoupleController {
     @Autowired CoupleService coupleService;
     
+   
     @Autowired
-    CoupleResultDAO crd;
-    @Autowired
-    CoupleInputDAO cid;
+    CoupleDAO cdao;
     
     @GetMapping("/coupleinput")
     public String showInput() { 
@@ -29,7 +27,7 @@ public class CoupleController {
     @PostMapping("/coupleInputInsert")
     public String inputInsert(CoupleInputVO civ, Model model) {
         // 1. 입력값 DB 저장
-        cid.insertCoupleInput(civ);
+    	cdao.insertCoupleInput(civ);
 
         
         // 2. Gemini API로 궁합 분석

@@ -15,20 +15,43 @@
 		<p>water: <span th:text="${resultVO.water}"></span></p>
 		<p>total: <span th:text="${resultVO.total}"></span></p>
 		
-		<form action="fate_detail.do" method="get">
-		    <select name="fateOption" id="fateOption" onchange="this.form.submit()">
+		    <select name="fateOption" id="fateOption" onchange="handleOnChange(this)">
 		        <option value="love">연애운</option>
 		        <option value="health">건강운</option>
 		        <option value="money">재물운</option>
 		        <option value="job">직업운</option>			
 		    </select>
-		</form>
 		
-		<p th:if="${detail != null}">
-			<p>운세 결과:</p> <span th:text="${detail}"></span>
-		</p>
+		<p>운세 결과:</p> <span id ="detail" th:text="${resultVO.love}"></span>
+
 		<a href="home.do">홈으로</a>
 	</div>
+	<script th:inline="javascript">
+	function handleOnChange(e) {
+	    const value = e.value;
+	    let text = "";
+	
+	    if (value === "love") {
+	        text = /*[[${resultVO.love}]]*/"";
+	    } else if (value === "health") {
+	        text = /*[[${resultVO.health}]]*/"";
+	    } else if (value === "money") {
+	        text = /*[[${resultVO.money}]]*/"";
+	    } else if (value === "job") {
+	        text = /*[[${resultVO.job}]]*/"";
+	    }
+	
+	    document.getElementById('detail').innerText = text;
+	}
+	
+	window.onload = function() {
+	    const select = document.querySelector("select[name='fateOption']");
+	    handleOnChange(select);
+	}
+	</script>
+
+
+
 </body>
 
 </html>

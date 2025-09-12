@@ -16,12 +16,9 @@
             	HEALTH health,
             	JOB job
 		from resultfate
-		where RESULTFATE_ID = #{resultFateId}
+		where RESULTFATE_ID = #{value}
 	</select>
 	
-	<select id="selectEachResultFate" parameterType="map" resultType="String">
-		select ${fate_name} from resultfate where RESULTFATE_ID = #{resultFateId}
-	</select>
 
 	<insert id="insertInputFate" parameterType="lx.edu.springboot.vo.FateInputVO">
 		insert into inputfate(USER_NAME, USER_BIRTH, USER_TIME, USER_GENDER)
@@ -29,7 +26,7 @@
 	</insert>
 
 	<insert id="insertResultFate" parameterType="lx.edu.springboot.vo.FateResultVO">
-		 INSERT INTO resultfate(USER_NAME, MAXFIVE, TREE, FIRE, SOIL, STEEL, WATER, TOTAL, LOVE, MONEY, HEALTH, JOB, INPUTFATE_ID, INPUTFATE_INPUTFATE_ID1)
-        VALUES(#{userName}, #{maxFive}, #{tree}, #{fire}, #{soil}, #{steel}, #{water}, #{total}, #{love}, #{money}, #{health}, #{job}, #{inputFateId}, #{inputFateId})
+		 INSERT INTO resultfate(USER_NAME, MAXFIVE, TREE, FIRE, SOIL, STEEL, WATER, TOTAL, LOVE, MONEY, HEALTH, JOB)
+        VALUES(#{userName}, #{maxFive}, #{tree}, #{fire}, #{soil}, #{steel}, #{water}, #{total}, #{love}, #{money}, #{health}, #{job})
 	</insert>
 </mapper>
