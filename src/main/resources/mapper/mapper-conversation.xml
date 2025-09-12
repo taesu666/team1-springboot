@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-addrbook">
+
+	<select id="getDBList" resultType="lx.edu.springboot.vo.ConversationVO">
+		select RESULTFATE_ID ,USER_NAME  
+		from resultfate
+	</select>
+	
+	<select id="selectFateDBlist" resultType="lx.edu.springboot.vo.ConversationVO" parameterType="int">
+		select RESULTFATE_ID ,USER_NAME  
+			from resultfate
+			where RESULTFATE_ID = #{value}
+	</select>
+
+	
+
+</mapper>

@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="conversation.css" type="text/css"
+	media="screen" />
+
+<script type="text/javascript">
+	function delcheck() {
+		result = confirm("정말로 삭제하시겠습니까 ?");
+
+		if (result == true) {
+			document.form1.action.value = "delete";
+			document.form1.submit();
+		} else
+			return;
+	}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OOO : 사주 결과</title>
+</head>
+
+<body>
+	<div align="center">
+		<H2>사주 결과 보여주는 화면</H2>
+		<HR>
+		<p>
+
+			<table border="1">
+				<tr>
+					<th>이 름</th>
+					<td><input type="text" name="userName" th:value="${result.resultfateID}"></td>
+				</tr>
+			
+			</table>
+
+	</div>
+</body>
+</html>
