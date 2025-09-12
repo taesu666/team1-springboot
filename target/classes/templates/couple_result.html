@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>궁합 결과</title>
+</head>
+<body>
+	<div class="container">
+		<h1>궁합 결과</h1>
+
+		<div class="result-box">
+			<p>
+				<strong>당신 이름:</strong> <span th:text="${result.userName}"></span>
+			</p>
+			<p>
+				<strong>상대 이름:</strong> <span th:text="${result.partnerName}"></span>
+			</p>
+			<p>
+				<strong>궁합 점수:</strong> <span th:text="${result.score}"></span> 점
+			</p>
+			<p>
+				<strong>분석 결과:</strong>
+			</p>
+			<p th:text="${result.total}"></p>
+			<p>
+				<strong>애정운:</strong>
+			</p>
+			<p th:text="${result.love}"></p>
+			<p>
+				<strong>동업운:</strong>
+			</p>
+			<p th:text="${result.partner}"></p>
+
+		</div>
+
+		<a href="/coupleinput" class="btn-back">다시 입력하기</a>
+	</div>
+</body>
+</html>

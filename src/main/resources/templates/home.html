@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="/css/home.css" type="text/css" media="screen" />
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>사주세요:홈화면</title>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	</head>
+	
+	<body>
+		<div align="center"> 
+			<H2>사주세요:홈화면</H2>
+			<HR>
+			<form>
+				<a href=""></a><P>
+			
+				<table border="1">
+					<tr><th>번호</th><th>이 름</th><th>전화번호</th><th>생 일</th><th>회 사</th><th>메 모</th></tr>
+					
+					 
+					<tr th:each="vo : ${data}">
+						<td><a th:href="|javascript:check(${vo.abId})|" th:text="${vo.abId}"></a></td>
+						<td th:text="${vo.abName}"></td>
+						<td th:text="${vo.abTel}"></td>
+						<td th:text="${vo.abBirth}"></td>
+						<td th:text="${vo.abComdept}"></td>
+						<td th:text="${vo.abMemo}"></td>
+					</tr>
+					 
+				</table>
+			</form>
+		</div>
+
+	</body>
+</html>
