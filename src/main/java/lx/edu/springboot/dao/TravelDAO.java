@@ -1,4 +1,4 @@
-package lx.myproject.dao;
+package lx.edu.springboot.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import lx.myproject.vo.TravelVO;
+import lx.edu.springboot.vo.TravelVO;
 
 @Repository
 public class TravelDAO {

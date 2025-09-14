@@ -24,11 +24,13 @@
 				<tr>
 					<th>번호</th>
 					<th>이 름</th>
+					<th>파트너 이름</th>
 				</tr>
 
-				<tr th:each="vo : ${data}">
-					<td><a th:href="|javascript:check(${vo.resultcoupleID})|" th:text="${vo.resultcoupleID}"></a></td>
+				<tr th:each="vo : ${result}">
+					<td><a th:href="|javascript:check(${vo.resultCoupleId})|" th:text="${vo.resultCoupleId}"></a></td>
 					<td th:text="${vo.userName}"></td>
+					<td th:text="${vo.partnerName}"></td>
 				</tr>
 
 			</table>

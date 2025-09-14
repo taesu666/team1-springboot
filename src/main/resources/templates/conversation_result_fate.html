@@ -1,37 +1,46 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="conversation.css" type="text/css"
-	media="screen" />
-
-<script type="text/javascript">
-	function delcheck() {
-		result = confirm("정말로 삭제하시겠습니까 ?");
-
-		if (result == true) {
-			document.form1.action.value = "delete";
-			document.form1.submit();
-		} else
-			return;
-	}
-</script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OOO : 사주 결과</title>
+<meta charset="UTF-8">
+<title>사주대화</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-
 <body>
-	<div align="center">
-		<H2>사주 결과 보여주는 화면</H2>
-		<HR>
-		<p>
+<div align="center"> 
+    <div th:each="c : ${result}"> 
+        <b th:text="${c.userId}">사용자</b> : <span th:text="${c.content}">내용</span> 
+    </div>
 
-			<table border="1">
-				<tr>
-					<th>이 름</th>
-					<td><input type="text" name="userName" th:value="${result.resultfateID}"></td>
-				</tr>
-			
-			</table>
+    <form id="conversation_form" th:action="@{/insert_conversation.do}" method="post">
+        <input type="hidden" name="targetId" th:value="${targetId}" />
+        <input type="hidden" name="type" th:value="${type}" />
+        이름: <input type="text" name="userId"><br>
+        내용: <textarea name="content" rows="3"></textarea><br>
+        <button type="submit">댓글 등록</button>
+    </form>
+</div>
 
-	</div>
+<script>
+function loadConversation() {
+    let targetId = $("#targetId").val();
+    let type = $("#type").val();
+    $.ajax({
+        type: "get",
+        url: "/conversation_result_fate.do",
+        data: { targetId: targetId, type: type },
+        success: function(res) {
+            let html = "";
+            res.forEach(function(c) {
+                html += "<b>" + c.userId + "</b> : " + c.content + "<hr>";
+            });
+            $("#conversation_result_fate").html(html);
+        }
+    });
+}
+
+$(document).ready(function() {
+    loadConversation();         // 초기 로드
+    setInterval(loadConversation, 3000);  // 3초마다 댓글 영역 갱신
+});
+</script>
 </body>
 </html>
