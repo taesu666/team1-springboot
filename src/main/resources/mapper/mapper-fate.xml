@@ -26,7 +26,17 @@
 	</insert>
 
 	<insert id="insertResultFate" parameterType="lx.edu.springboot.vo.FateResultVO">
-		 INSERT INTO resultfate(USER_NAME, MAXFIVE, TREE, FIRE, SOIL, STEEL, WATER, TOTAL, LOVE, MONEY, HEALTH, JOB)
-        VALUES(#{userName}, #{maxFive}, #{tree}, #{fire}, #{soil}, #{steel}, #{water}, #{total}, #{love}, #{money}, #{health}, #{job})
+		 INSERT INTO resultfate(USER_NAME, MAXFIVE, TREE, FIRE, SOIL, STEEL, WATER, TOTAL, LOVE, MONEY, HEALTH, JOB, RESULT_TYPE)
+        VALUES(#{userName}, #{maxFive}, #{tree}, #{fire}, #{soil}, #{steel}, #{water}, #{total}, #{love}, #{money}, #{health}, #{job}, 1)
 	</insert>
+	
+	
+	<!-- 리스트에 보여줄 결과 가져오기 (사주) -->
+	
+	<select id="getFateList" resultType="lx.edu.springboot.vo.FateResultVO" parameterType="int">
+			select RESULTFATE_ID ,USER_NAME  
+			from resultfate
+	</select>
+	
+	
 </mapper>

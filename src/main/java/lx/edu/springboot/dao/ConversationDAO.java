@@ -14,16 +14,13 @@ public class ConversationDAO {
 	@Autowired
 	SqlSession session;
 
-	public int insertDB(ConversationVO ab) throws Exception {
-		return session.insert("insertDB", ab);
+	public int insertConversation(ConversationVO ab) throws Exception {
+		return session.insert("insertConversation", ab);
 	}
 	
-	public List<ConversationVO> getDBList() throws Exception {
-		return session.selectList("getDBList");
-	}
 
-	public ConversationVO selectFateDBlist(int resultfateId) {
-		return session.selectOne("selectFateDBlist", resultfateId);
+	public List<ConversationVO> getConversationList(int targetId) {
+		return session.selectList("getConversationList", targetId);
 	}
 
 

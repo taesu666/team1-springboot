@@ -14,7 +14,7 @@
 	<insert id="insertCoupleInputDB"
 		parameterType="lx.edu.springboot.vo.CoupleInputVO"
 		>
-		INSERT INTO project1.inputcouple
+		INSERT INTO inputcouple
 		(USER_NAME,USER_BIRTH,USER_GENDER,USER_TIME, PARTNER_NAME, PARTNER_BIRTH, PARTNER_GENDER, PARTNER_TIME)
 		VALUES
 		(#{userName}, #{userBirth}, #{userGender}, #{userTime}, #{partnerName},  #{partnerBirth}, #{partnerGender}, #{partnerTime}
@@ -25,12 +25,18 @@
 	<insert id="insertCoupleResultDB"
 		parameterType="lx.edu.springboot.vo.CoupleResultVO"
 		>
-		INSERT INTO project1.resultcouple
+		INSERT INTO resultcouple
 		(USER_NAME, PARTNER_NAME, SCORE, LOVE, PARTNER, TOTAL)
 		VALUES
 		(#{userName}, #{partnerName}, #{score}, #{love}, #{partner}, #{total}
 		)
 	</insert>
+	
+	<!-- 리스트에 보이는 결과 가져오기 -->
+	<select id="getCoupleList" resultType="lx.edu.springboot.vo.CoupleResultVO" parameterType="int">
+			select RESULTCOUPLE_ID ,USER_NAME, PARTNER_NAME
+			from resultcouple
+	</select>
 	
 
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 
