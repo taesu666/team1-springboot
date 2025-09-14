@@ -35,4 +35,5 @@ public class FateDAO {
 		return session.selectList("getFateList");
 
 	}
+
 }
