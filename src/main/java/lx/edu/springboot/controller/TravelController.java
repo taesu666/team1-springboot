@@ -1,4 +1,4 @@
-package lx.myproject.controller;
+package lx.edu.springboot.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import lx.myproject.dao.TravelDAO;
-import lx.myproject.vo.TravelVO;
+import lx.edu.springboot.dao.TravelDAO;
+import lx.edu.springboot.vo.TravelVO;
 
 @Controller
 public class TravelController {

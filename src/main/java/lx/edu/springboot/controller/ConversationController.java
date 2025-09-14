@@ -20,32 +20,19 @@ import lx.edu.springboot.vo.ConversationVO;
 public class ConversationController {
 	
 	@Autowired
-	ApplicationContext context;
-
-	@Autowired
 	ConversationDAO dao;
 
-	@GetMapping("/conversation_select")
+	@GetMapping("/conversation_select.do")
 	public String form2() {
 		return "conversation_select";
 	}
 	
-	@RequestMapping("/insert.do")
-	public String insert(ConversationVO vo) throws Exception {
-		System.out.println(vo);
-		dao.insertDB(vo);
-		return "redirect:addrbook_list.do";
-	}
 
-	@RequestMapping("/addrbook_form.do")
-	public String form() {
-		return "addrbook_form"; // jsp file name
-	}
 
 	// 사주 목록
 	@RequestMapping("/conversation_list_fate.do")
 	public String list(HttpServletRequest req) throws Exception {
-	    List<ConversationVO> list = dao.getDBList();
+	    List<ConversationVO> list = dao.getConversationList(1);
 	    req.setAttribute("data", list);
 	    return "conversation_list_fate";  // 뷰 파일 이름 (addrbook_list.jsp 또는 .html)
 	}
@@ -53,12 +40,12 @@ public class ConversationController {
 	// 궁합 목록
 	@RequestMapping("/conversation_list_couple.do")
 	public String list2(HttpServletRequest req) throws Exception {
-	    List<ConversationVO> list = dao.getDBList();
+	    List<ConversationVO> list = dao.getConversationList(1);
 	    req.setAttribute("data", list);
 	    return "conversation_list_couple";  // 뷰 파일 이름 (addrbook_list.jsp 또는 .html)
 	}
 	
-    // 사주 리스트 페이지
+  /*  // 사주 리스트 페이지
     @GetMapping("/conversation_list_fate.do")
     public String listFate(HttpServletRequest req) throws Exception {
         List<ConversationVO> list = dao.getDBList();
@@ -72,6 +59,6 @@ public class ConversationController {
         ConversationVO vo = dao.selectFateDBlist(resultfateId);
         model.addAttribute("result", vo);
         return "conversation_result_fate";
-    }
+    }*/
 
 }

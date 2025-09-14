@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper-travel">
 	<select id="selectTravelDB" parameterType="int"
-		resultType="lx.myproject.vo.TravelVO">
+		resultType="lx.edu.springboot.vo.TravelVO">
 		select travel_id
 		,maxFive
 		,travel_name
@@ -20,7 +20,7 @@
 		WHERE resultfate_id = 1 
 	</select>
 	<select id="getRecommendedByMaxFive" parameterType="string"
-		resultType="lx.myproject.vo.TravelVO">
+		resultType="lx.edu.springboot.vo.TravelVO">
 		SELECT 
 			travel_name,
 			travel_location,
@@ -39,7 +39,7 @@
 		limit 1
 	</select>
 	<select id="getAvoidByBad" parameterType="string"
-		resultType="lx.myproject.vo.TravelVO">
+		resultType="lx.edu.springboot.vo.TravelVO">
 		SELECT 
 			travel_name,
 			travel_location,
