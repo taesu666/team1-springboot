@@ -55,6 +55,21 @@ public class LoginController {
 		model.addAttribute("vo", new LoginVO());
 		return "register";
 	}
+		
+	@RequestMapping("/fate") 
+	public String goToFate() {
+		return "fate_input_form";
+	}	
+
+	@RequestMapping("/couple") 
+	public String goToCouple() {
+		return "couple_input";
+	}
+
+	@RequestMapping("/result") 
+	public String goToResult() {
+		return "conversation_select";
+	}
 
 	
 
