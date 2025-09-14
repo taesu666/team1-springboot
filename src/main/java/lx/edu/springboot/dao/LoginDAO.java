@@ -20,4 +20,16 @@ public class LoginDAO {
 	public int updateLoginDB(LoginVO vo) {
 		return session.update("updateLoginDB", vo);
 	}
+
+	public LoginVO selectUserById(String userId) {
+		return session.selectOne("selectUserById", userId);
+    }
+
+	public boolean doLogin(String userId, String userPassword) {
+		LoginVO user = selectUserById(userId);
+		if (user != null && user.getUserPassword().equals(userPassword)) {
+			return true;
+		}
+		return false;
+	}
 }

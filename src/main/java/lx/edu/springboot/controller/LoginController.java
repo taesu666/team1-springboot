@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-
+import jakarta.servlet.http.HttpSession;
 import lx.edu.springboot.dao.LoginDAO;
 import lx.edu.springboot.vo.LoginVO;
 
@@ -33,44 +35,16 @@ public class LoginController {
 		dao.updateLoginDB(vo);
 		return "redirect:/login";
 	}
-	
-	@RequestMapping("/home") 
-	public String goToHome() {
-		return "home";
+
+	@PostMapping("/doLogin") 
+	public String doLogin(@RequestParam String userId, @RequestParam String userPassword, HttpSession session,	Model model) {
+		boolean success = dao.doLogin(userId, userPassword);
+		if (success) {
+			session.setAttribute("userId", userId);
+			return "redirect:/home";
+		} else {
+			model.addAttribute("errorMsg", "로그인에 실패했습니다. 아이디와 비밀번호를 확인하세요.");
+        	return "login";
+		}
 	}
-
-	@RequestMapping("/doLogin") 
-	public String doLogin() {
-		return "home";
-	}
-
-	@GetMapping("/login")
-	public String goToLogin(Model model) {
-		model.addAttribute("vo", new LoginVO()); // 빈 vo 객체 전달
-		return "login";
-	}
-
-	@GetMapping("/register")
-	public String goToRegister(Model model) {
-		model.addAttribute("vo", new LoginVO());
-		return "register";
-	}
-		
-	@RequestMapping("/fate") 
-	public String goToFate() {
-		return "fate_input_form";
-	}	
-
-	@RequestMapping("/couple") 
-	public String goToCouple() {
-		return "couple_input";
-	}
-
-	@RequestMapping("/result") 
-	public String goToResult() {
-		return "conversation_select";
-	}
-
-	
-
 }
