@@ -7,7 +7,6 @@ package lx.edu.springboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +23,7 @@ public class LoginController {
 	LoginDAO dao;
 	
 	@RequestMapping("/insertLogin.do")
-	public String insertLoginDB(LoginVO vo) throws Exception { //Spring에서는 이렇게 사용 가능!
+	public String insertLoginDB(LoginVO vo) throws Exception { 
 		System.out.println(vo);
 		dao.insertLoginDB(vo);
 		return "login";
