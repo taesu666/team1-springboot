@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -26,15 +27,10 @@ public class CoupleController {
 
 	@Autowired
 	PartnerDAO pdao;
-<<<<<<< HEAD
-	
-
-=======
 	@Autowired
 	CoupleDAO cdao;
->>>>>>> f92574f184ef90aba3474a2a5d0001ee75710adc
 
-	@GetMapping("/coupleinput")
+	@GetMapping("/coupleinput.do")
 	public String showInput(Model model) {
 		// DAO 직접 호출해서 partner 리스트 가져오기
 		List<PartnerVO> partners = pdao.getAllPartners();
@@ -45,7 +41,7 @@ public class CoupleController {
 		return "couple_input"; // 뷰 이름
 	}
 
-	@PostMapping("/coupleInputInsert")
+	@PostMapping("/coupleInputInsert.do")
 	public String inputInsert(CoupleInputVO civ, Model model) {
 		// 1. 입력값 DB 저장
 		cdao.insertCoupleInput(civ);
@@ -64,13 +60,22 @@ public class CoupleController {
 		return "couple_result";
 	}
 	
-	@RequestMapping("/conversation_list_couple.do")
+	@RequestMapping("/couple_list.do")
 	public String list(HttpServletRequest req) throws Exception {
 	    List<CoupleResultVO> list = cdao.getCoupleList();
 	    req.setAttribute("result", list);
-	    return "/conversation_list_couple";  
+	    return "/couple_list";  
 	}
-    	    
+	// 사주 삭제
+	@RequestMapping("/couple_delete.do")
+	public String delete(@RequestParam("resultCoupleId") int resultCoupleId, HttpServletRequest req) throws Exception {
+	    cdao.deleteCouple(resultCoupleId);
+
+	    List<CoupleResultVO> list = cdao.getCoupleList();
+	    req.setAttribute("result", list);
+
+	    return "/conversation_list_couple";
+	}
 
 
 }

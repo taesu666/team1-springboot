@@ -11,31 +11,27 @@ import lx.edu.springboot.vo.LoginVO;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/home")
+    @RequestMapping("/home.do")
     public String goToHome(HttpSession session, Model model) {
     	 String userNickName = (String) session.getAttribute("userNickName");
          model.addAttribute("userNickName", userNickName);
         return "home";  // home.html 뷰 반환
     }
 
-    @GetMapping("/register")
+    @GetMapping("/register.do")
     public String goToRegister(Model model) {
         model.addAttribute("vo", new LoginVO());  // 회원가입 폼에 빈 VO 제공
         return "register";  // register.html 뷰 반환
     }
 
-    @RequestMapping("/fate")
+    @RequestMapping("/fate.do")
     public String goToFate() {
         return "fate_input_form";  // 사주 입력 폼 뷰
     }
 
-    @RequestMapping("/couple")
+    @RequestMapping("/couple.do")
     public String goToCouple() {
         return "couple_input";  // 궁합 입력 폼 뷰
     }
 
-    @RequestMapping("/result")
-    public String goToResult() {
-        return "conversation_select";  // 결과 선택 뷰
-    }
 }

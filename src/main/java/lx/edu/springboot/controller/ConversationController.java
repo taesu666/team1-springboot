@@ -32,11 +32,11 @@ public class ConversationController {
 	    @Autowired
 	    private CoupleDAO coupleDao;
 	    
-		@GetMapping("/conversation_select")
-		public String form2() {
-			return "conversation_select";
+		@GetMapping("/result_select.do")
+		public String goToResultSelect() {
+			return "result_select";
 		}
-	    @GetMapping("/conversation_result_fate.do")
+	    @GetMapping("/fate_result_conversation.do")
 	    public String resultFate(@RequestParam(value="resultfateId", required=false, defaultValue="0") int resultfateId, Model model, HttpSession session) {
 	        // 1. 사주 상세 데이터 조회 (resultfateId 사용)
 	        FateResultVO detail = fateDao.selectResultFate(resultfateId);
@@ -52,38 +52,25 @@ public class ConversationController {
 
 	        
 	        // 상세 및 댓글 뷰 페이지 이름 반환
-	        return "conversation_result_fate"; 
+	        return "fate_result_conversation"; 
 	    }
 	    
-	    @GetMapping("/conversation_result_couple.do")
+	    @GetMapping("/couple_result_conversation.do")
 	    public String coupleResultDetail(@RequestParam(value="resultCoupleId", required=false, defaultValue="0") int resultcoupleId, Model model, HttpSession session) {
 	        // 1. 궁합 상세 데이터 조회 (resultcoupleId 사용)
 	        CoupleResultVO detail = coupleDao.selectResultCouple(resultcoupleId);
 	        model.addAttribute("coupleResultVO", detail);
 
-<<<<<<< HEAD
-
-        // 상세 및 댓글 뷰 페이지 이름 반환
-        return "conversation_result_fate"; 
-    }
-    
-    @GetMapping("/conversation_result_couple.do")
-    public String coupleResultDetail(@RequestParam(value="resultCoupleId", required=false, defaultValue="0") int resultcoupleId, Model model) {
-        // 1. 궁합 상세 데이터 조회 (resultcoupleId 사용)
-        CoupleResultVO detail = coupleDao.selectResultCouple(resultcoupleId);
-        model.addAttribute("coupleResultVO", detail);
-=======
 	        // 2. 댓글 리스트 조회 (targetId, type 사용)
 	        List<ConversationVO> list = conversationService.getConversationListByCoupleId(resultcoupleId);
 	        model.addAttribute("result", list);
->>>>>>> f92574f184ef90aba3474a2a5d0001ee75710adc
 
 
 	        // **3. 세션에서 닉네임 가져와 모델에 추가 (댓글 폼에서 사용)**
 	        String userNickName = (String) session.getAttribute("userNickName");
 	        model.addAttribute("userNickName", userNickName);
 	        // 상세 및 댓글 뷰 페이지 이름 반환
-	        return "conversation_result_couple"; // Thymeleaf 템플릿 이름
+	        return "couple_result_conversation"; // Thymeleaf 템플릿 이름
 	    }
 
 	    // 댓글 등록
