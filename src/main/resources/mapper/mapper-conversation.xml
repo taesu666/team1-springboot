@@ -6,39 +6,8 @@
 
 	<insert id="insertFateConversation"
 		parameterType="lx.edu.springboot.vo.ConversationVO">
-<<<<<<< HEAD
-		SELECT conversation_id, user_id, content, target_id,
-		type, login_id
-		FROM conversation
-		WHERE target_id = #{targetId} AND type
-		= #{type}
-	</select>
-
-
-	<select id="getConversationList" resultType="lx.edu.springboot.vo.ConversationVO" parameterType="int">
-		select USER_ID, CONTENT
-		from conversation
-		where TARGET_ID = #{value}
-	</select>
-	
-	<insert id="insertConversation" parameterType="lx.edu.springboot.vo.ConversationVO">
-		insert into conversation(USER_ID, CONTENT, TARGET_ID)
-        VALUES(#{userId}, #{content}, #{targetId})
-	</insert>
-	
-
-
-
-	<insert id="insertConversation"
-		parameterType="lx.edu.springboot.vo.ConversationVO">
-		INSERT INTO conversation(user_id, content, target_id,
-		type, login_id)
-		VALUES(#{userId}, #{content}, #{targetId}, #{type},
-		#{loginId})
-=======
 		INSERT INTO conversation(user_id, content, target_id, type, login_id)
 		VALUES(#{userId}, #{content}, #{targetId}, 1, #{loginId})
->>>>>>> eunho
 	</insert>
 
 
