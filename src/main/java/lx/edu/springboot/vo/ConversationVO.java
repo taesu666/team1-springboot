@@ -55,6 +55,4 @@ public class ConversationVO {
         this.loginId = loginId;
     }
 
-    
-
 }
