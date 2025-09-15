@@ -12,10 +12,9 @@
 
     <update id="updateLoginDB" parameterType="lx.edu.springboot.vo.LoginVO">
         UPDATE login
-        SET USER_NICKNAME = #{userNickName},
-            USER_PW = #{userPassword},
-            USER_ID = #{userId}
-        WHERE loginId = #{loginId}
+        SET USER_NICKNAME = #{userNickName}
+         
+        WHERE USER_ID = #{userId}
     </update>
 
     <select id="selectUserById" parameterType="String" resultType="lx.edu.springboot.vo.LoginVO">

@@ -18,9 +18,6 @@ public class CoupleDAO {
 	@Autowired
 
 	SqlSession session;
-
-
-
 	
 
 	public int insertCoupleInput(CoupleInputVO civ) {

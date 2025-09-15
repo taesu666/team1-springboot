@@ -1,4 +1,3 @@
-
 package lx.edu.springboot.dao;
 
 import java.util.HashMap;
@@ -37,4 +36,9 @@ public class FateDAO {
 
 	}
 
+
+
+	public int deleteFate(int resultFateId) {
+		return session.delete("deleteFate", resultFateId);
+	}
 }
