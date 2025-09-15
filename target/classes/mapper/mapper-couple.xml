@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper-couple">
-	<!-- <select id="getDBList" resultType="lx.edu.springboot.vo.CoupleVO"> 
-		select ab_id abId, ab_name abName, ab_email abEmail, ab_comdept abComdept, 
-		ab_birth abBirth, ab_tel abTel, ab_memo abMemo from addrbook </select> <select 
-		id="getDB" parameterType="int" resultType="lx.edu.springboot.vo.CoupleVO"> 
-		select ab_id abId, ab_name abName, ab_email abEmail, ab_comdept abComdept, 
-		ab_birth abBirth, ab_tel abTel, ab_memo abMemo from addrbook where ab_id 
-		= #{abId} </select> -->
-	<!-- public boolean insertDB(AddrBookVO ab) throws Exception { -->
-	
-	<!-- 궁합인원 정보 couple_input db에 저장 -->
 	<insert id="insertCoupleInputDB"
 		parameterType="lx.edu.springboot.vo.CoupleInputVO"
 		>
@@ -53,6 +43,20 @@
 		FROM project1.partnerinfo
 	</select>
 
+	
+	<!-- 사주 목록에서 넘어갈때 -->
+	<select id="selectResultCouple" parameterType="int" resultType="lx.edu.springboot.vo.CoupleResultVO">
+		select RESULTCOUPLE_ID resultCoupleId,
+ 				USER_NAME userName,
+				PARTNER_NAME partnerName,
+				SCORE score,
+				PARTNER partner,
+             	TOTAL total,
+            	LOVE love
+		from resultcouple
+		where RESULTCOUPLE_ID = #{id}
+	</select>
+	
 
 
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 

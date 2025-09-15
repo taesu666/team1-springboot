@@ -15,6 +15,7 @@
     from travel
     where TRAVELID = #{travelId}
 	</select>
+	<!-- 
 	<select id="getMaxFiveByResultFateId" parameterType="int"
 		resultType="string">
 		SELECT t.maxFive
@@ -23,6 +24,7 @@
 		WHERE t.resultFateId = #{resultFateId}
 		LIMIT 1
 	</select>
+	 -->
 	<select id="getRecommendedByMaxFive" parameterType="string"
 		resultType="lx.edu.springboot.vo.TravelVO">
 		SELECT 

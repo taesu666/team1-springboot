@@ -1,6 +1,4 @@
-
-// 첫 생성
-// 로그인, 회원가입 추가
+// 보물찾기
 
 package lx.edu.springboot.controller;
 
@@ -35,15 +33,17 @@ public class LoginController {
 		return "redirect:/login";
 	}
 
-	@PostMapping("/doLogin") 
-	public String doLogin(@RequestParam String userId, @RequestParam String userPassword, HttpSession session,	Model model) {
-		boolean success = dao.doLogin(userId, userPassword);
-		if (success) {
-			session.setAttribute("userId", userId);
-			return "redirect:/home";
-		} else {
-			model.addAttribute("errorMsg", "로그인에 실패했습니다. 아이디와 비밀번호를 확인하세요.");
-        	return "login";
-		}
-	}
+
+//	@PostMapping("/doLogin") 
+//	public String doLogin(@RequestParam String userId, @RequestParam String userPassword, HttpSession session,	Model model) {
+//	boolean success = dao.doLogin(userId, userPassword);
+//		if (success) {
+//			session.setAttribute("userId", userId);
+//			return "redirect:/home";
+//		} else {
+//			model.addAttribute("errorMsg", "로그인에 실패했습니다. 아이디와 비밀번호를 확인하세요.");
+//        	return "login";
+//		}
+//	}
+
 }
