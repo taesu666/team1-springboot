@@ -18,7 +18,7 @@ public class ConversationDAO {
 		return session.insert("insertDB", ab);
 	}
 	
-	public List<ConversationVO> getDBList() throws Exception {
+	public List<ConversationVO> getDBList(int targetId, int type) throws Exception {
 		return session.selectList("getDBList");
 	}
 
