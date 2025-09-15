@@ -30,17 +30,6 @@ public class ConversationController {
 		return "conversation_select";
 	}
 	
-	@RequestMapping("/insert.do")
-	public String insert(ConversationVO vo) throws Exception {
-		System.out.println(vo);
-		dao.insertDB(vo);
-		return "redirect:addrbook_list.do";
-	}
-
-	@RequestMapping("/addrbook_form.do")
-	public String form() {
-		return "addrbook_form"; // jsp file name
-	}
 
     // 개별 사주 결과 상세 페이지
 	/*

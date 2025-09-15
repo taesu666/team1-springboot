@@ -14,17 +14,18 @@ public class ConversationDAO2 {
 	@Autowired
 	SqlSession session;
 
-	public int insertConversation(ConversationVO vo) throws Exception {
+	public int insertFateConversation(ConversationVO vo) throws Exception {
 		return session.insert("insertConversation", vo);
 	}
 	
 
-	public List<ConversationVO> getConversationList(int targetId, int type) {
-	    ConversationVO param = new ConversationVO();
-	    param.setTargetId(targetId);
-	    param.setType(type);
-	    return session.selectList("getConversationList", param);
+	public List<ConversationVO> getConversationListByFateId(int resultfateId) {
+	    return session.selectList("getConversationListByFateId", resultfateId);
 	}
+
+
+
+
 
 	/*
 	 * public static List<ConversationVO> getCommentsByFateId(int inputId) { return

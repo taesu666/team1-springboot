@@ -37,6 +37,6 @@
 			select RESULTFATE_ID ,USER_NAME  
 			from resultfate
 	</select>
-	
+
 	
 </mapper>

@@ -15,12 +15,12 @@ public class ConversationService {
     private ConversationDAO2 dao;
 
     // 댓글 목록 조회
-    public List<ConversationVO> getConversationList(int targetId, int type) {
-        return dao.getConversationList(targetId, type);
+    public List<ConversationVO> getConversationListByFateId(int resultfateId) {
+        return dao.getConversationListByFateId(resultfateId);
     }
 
     // 댓글 등록
-    public void insertConversation(ConversationVO vo) throws Exception {
-        dao.insertConversation(vo);
+    public void insertFateConversation(ConversationVO vo) throws Exception {
+        dao.insertFateConversation(vo);
     }
 }

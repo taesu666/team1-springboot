@@ -34,15 +34,15 @@
     </div>
 
     <!-- 댓글 등록 폼 -->
-    <form id="conversation_form" th:action="@{/insert_conversation.do}" method="post">
-        <input type="hidden" name="targetId" th:value="${targetId}" />
+    <form id="conversation_form" th:action="@{/insert_fate_conversation.do}" method="post">
+        <input type="hidden" name="targetId" th:value="${resultVO.resultFateId}" />
         <input type="hidden" name="type" th:value="${type}" />
         이름: <input type="text" name="userId" required><br>
         내용: <textarea name="content" rows="3" required></textarea><br>
         <button type="submit">댓글 등록</button>
     </form>
 
-    <a href="home.do">홈으로</a>
+    <a href="/conversation_list_fate.do">리스트로</a>
 </div>
 
 <script th:inline="javascript">

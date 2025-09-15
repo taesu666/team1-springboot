@@ -22,32 +22,24 @@ public class ConversationController2 {
     private FateDAO fateDao; // DAO 주입 
 
     @GetMapping("/conversation_result_fate.do")
-    public String resultFate(@RequestParam(value="resultfateId", required=false, defaultValue="0") int resultfateId,
-                             @RequestParam(value="targetId", required=false, defaultValue="0") int targetId,
-                             @RequestParam(value="type", required=false, defaultValue="0") int type,
-                             Model model) {
+    public String resultFate(@RequestParam(value="resultfateId", required=false, defaultValue="0") int resultfateId, Model model) {
         // 1. 사주 상세 데이터 조회 (resultfateId 사용)
         FateResultVO detail = fateDao.selectResultFate(resultfateId);
         model.addAttribute("resultVO", detail);
 
         // 2. 댓글 리스트 조회 (targetId, type 사용)
-        List<ConversationVO> list = conversationService.getConversationList(targetId, type);
+        List<ConversationVO> list = conversationService.getConversationListByFateId(resultfateId);
         model.addAttribute("result", list);
-
-        model.addAttribute("targetId", targetId);
-        model.addAttribute("type", type);
 
         // 상세 및 댓글 뷰 페이지 이름 반환
         return "conversation_result_fate"; 
     }
     // 댓글 등록
-    @PostMapping("/insert_conversation.do")
-    public String insertConversation(@RequestParam(value="targetId", required=false, defaultValue="0") int targetId,
-                                     @RequestParam(value="type", required=false, defaultValue="0") int type, ConversationVO vo) throws Exception {
+    @PostMapping("/insert_fate_conversation.do")
+    public String insertFateConversation(@RequestParam(value="targetId", required=false, defaultValue="0") int targetId, ConversationVO vo) throws Exception {
         vo.setTargetId(targetId);
-        vo.setType(type);
-        conversationService.insertConversation(vo);
+        conversationService.insertFateConversation(vo);
 
-        return "redirect:/conversation_result_fate.do?targetId=" + targetId + "&type=" + type;
+        return "redirect:/conversation_result_fate.do?resultfateId=" + targetId;
     }
 }
