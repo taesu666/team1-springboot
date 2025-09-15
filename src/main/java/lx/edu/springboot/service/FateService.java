@@ -19,9 +19,9 @@ public class FateService {
 	
     public FateResultVO fateGenerate(FateInputVO inputVO) {
     	String prompt = String.format(
-    			"사용자 이름: %s, 생년월일: %s, 시간: %s, 성별: %s를 기반으로 각 오행이 몇퍼센트인지랑, 총운, 건강운, 직업운, 연애운, 재물운 사주를 분석해줘."
+    			"사용자 이름: %s, 생년월일: %s, 시간: %s, 성별: %s를 기반으로 각 오행이 몇퍼센트인지랑 오행 중에 최대값, 총운, 건강운, 직업운, 연애운, 재물운 사주를 분석해줘."
     			+ "꼭 순수 JSON만 반환하고, "
-    			+ "필수 키: 목_퍼센트, 화_퍼센트, 토_퍼센트, 금_퍼센트, 수_퍼센트, 총운, 건강운, 직업운, 연애운, 재물운."
+    			+ "필수 키: 목_퍼센트, 화_퍼센트, 토_퍼센트, 금_퍼센트, 수_퍼센트, 최대오행, 총운, 건강운, 직업운, 연애운, 재물운."
     			+"근데 좀 더 길게 주저리주러리해봐. 꼭 순수 JSON으로 반환할 것."
     			+"총운, 건강운, 직업운, 연애운, 재물운 다 공백포함 600자 이상, 1000바이트 이상 이정도로 길게"
     			+"그리고 분석 좀 더 잘해봐. 너무 모든 사람을 똑같이 말해준다. 한 30명이 테스트할거니깐 다 최대한 창의적이게 대답해. 형식적이게 하지말고. 개수도 똑바로 세주라 ㅠㅠ 할때마다 바껴..JSON형식 잊지말고"
@@ -71,6 +71,7 @@ public class FateService {
         int soil = obj.optInt("토_퍼센트", 0);
         int steel = obj.optInt("금_퍼센트", 0);
         int water = obj.optInt("수_퍼센트", 0);
+        String maxFive = obj.optString("최대오행", "정보 없음");
         String total = obj.optString("총운", "정보 없음");
         String health = obj.optString("건강운", "정보 없음");
         String job = obj.optString("직업운", "정보 없음");
@@ -82,6 +83,7 @@ public class FateService {
         fateResult.setSoil(soil);
         fateResult.setSteel(steel);
         fateResult.setWater(water);
+        fateResult.setMaxFive(maxFive);
         fateResult.setTotal(total);
         fateResult.setHealth(health);
         fateResult.setJob(job);

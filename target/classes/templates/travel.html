@@ -1,7 +1,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title th:text="${userName} + '님의 사주'">여행 추천</title>
+<title th:text="${userName} + '님의 여행지 추천'"></title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -11,19 +11,19 @@
 	<div class="page-wrap py-4">
 		<div class="container">
 
-			<!-- 상단: OOO님의 사주: OOOO -->
+			<!-- 상단: OOO님의 최고오행: OOOO -->
 			<div class="maxFive-banner mb-4">
 				<div
 					class="d-flex align-items-center justify-content-between gap-3 flex-wrap">
 					<div>
 						<div class="maxFive-title h4 mb-1">
-							<span th:text="${userName}">OOO</span> 님의 사주: <span
-								th:text="${maxFive}">OOOO</span>
+							<span th:text="${userName}">OOO</span> 님의 최고오행: <span
+								th:text="${maxFive}">O</span>
 						</div>
 						<div class="text-secondary-emphasis">기운에 맞춘 맞춤 여행 추천을 준비했어요.
 						</div>
 					</div>
-					<a href="" class="btn btn-light fw-bold shadow-sm">
+					<a href="/conversation_list_fate.do" class="btn btn-light fw-bold shadow-sm">
 						사주/궁합 리스트 보기 &rarr; </a>
 				</div>
 			</div>
