@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -17,7 +18,15 @@ import lx.edu.springboot.dao.PartnerDAO;
 import lx.edu.springboot.service.CoupleService;
 import lx.edu.springboot.vo.CoupleInputVO;
 import lx.edu.springboot.vo.CoupleResultVO;
+<<<<<<< HEAD
+
+import lx.edu.springboot.vo.FateResultVO;
+
+=======
+import lx.edu.springboot.vo.FateResultVO;
+>>>>>>> eunho
 import lx.edu.springboot.vo.PartnerVO;
+
 
 @Controller
 public class CoupleController {
@@ -25,9 +34,21 @@ public class CoupleController {
 	CoupleService coupleService;
 
 	@Autowired
-	PartnerDAO pdao;
-	@Autowired
 	CoupleDAO cdao;
+	
+	@Autowired
+	PartnerDAO pdao;
+	
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> minho
+
+
+
+>>>>>>> byeongiu
 
 	@GetMapping("/coupleinput")
 	public String showInput(Model model) {
@@ -38,6 +59,7 @@ public class CoupleController {
 		model.addAttribute("partners", partners);
 
 		return "couple_input"; // 뷰 이름
+
 	}
 
 	@PostMapping("/coupleInputInsert")
@@ -58,14 +80,46 @@ public class CoupleController {
 
 		return "couple_result";
 	}
-	
-	@RequestMapping("/conversation_list_couple.do")
+
+
+	// 사주 목록
+	@RequestMapping("/list_couple.do")
 	public String list(HttpServletRequest req) throws Exception {
+	    List<CoupleResultVO> list = cdao.getCoupleList();
+	    req.setAttribute("result", list);
+	    return "list_couple";  
+	}
+    	    
+
+    	
+   
+    
+
+
+	@RequestMapping("/conversation_list_couple.do")
+	public String list2(HttpServletRequest req) throws Exception {
 	    List<CoupleResultVO> list = cdao.getCoupleList();
 	    req.setAttribute("result", list);
 	    return "/conversation_list_couple";  
 	}
+	
+	// 사주 삭제
+	@RequestMapping("/couple_delete.do")
+	public String delete(@RequestParam("resultCoupleId") int resultCoupleId, HttpServletRequest req) throws Exception {
+	    cdao.deleteCouple(resultCoupleId);
+
+	    List<CoupleResultVO> list = cdao.getCoupleList();
+	    req.setAttribute("result", list);
+
+	    return "/conversation_list_couple";
+	}
+
     	    
 
 
+<<<<<<< HEAD
 }
+
+=======
+}
+>>>>>>> eunho

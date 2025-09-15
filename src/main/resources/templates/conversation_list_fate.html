@@ -6,12 +6,7 @@
 <link rel="stylesheet" href="css/conversation.css" type="text/css"
 	media="screen" />
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-	function check(resultfateId) {
-		document.location.href = "conversation_result_fate.do?resultfateId="
-				+ resultfateId;
-	}
-</script>
+
 </head>
 <body>
 	<div align="center">
@@ -25,13 +20,15 @@
 			<tr th:each="vo : ${result}">
 				<td><a th:href="|javascript:check(${vo.resultFateId})|"
 					th:text="${vo.resultFateId}"></a></td>
-
 				<td th:text="${vo.userName}"></td>
+				<td>
+				<button type="button" class="btn btn-secondary" th:onclick="|location.href='/fate_delete.do?resultFateId=${vo.resultFateId}'|">삭제</button>
+				</td>
 			</tr>
 		</table>
 		
 		<div class="mt-4 d-flex justify-content-between">
-        	<button type="button" class="btn btn-secondary" onclick="location.href='/conversation_select.do'">이전 화면으로</button>
+        	<button type="button" class="btn btn-secondary" onclick="location.href='/select.do'">이전 화면으로</button>
 	    </div>
 	</div>
 </body>

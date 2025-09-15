@@ -14,20 +14,24 @@ import lx.edu.springboot.vo.FateResultVO;
 @Repository
 
 public class CoupleDAO {
-	
 
 	@Autowired
-	SqlSession session; 
-	
-	public int insertCoupleInput(CoupleInputVO civ) {
-		return session.insert("insertCoupleInputDB", civ); 
-	}
+
+	SqlSession session;
+
+
 
 	
-	public int insertCoupleResult(CoupleResultVO crv) {
-		return session.insert("insertCoupleResultDB", crv); 
+
+	public int insertCoupleInput(CoupleInputVO civ) {
+		return session.insert("insertCoupleInputDB", civ);
 	}
-	
+
+	public int insertCoupleResult(CoupleResultVO crv) {
+		return session.insert("insertCoupleResultDB", crv);
+	}
+
+
 
 	public List<CoupleResultVO> getCoupleList() {
 		return session.selectList("getCoupleList");
@@ -36,6 +40,10 @@ public class CoupleDAO {
 
 	public CoupleResultVO selectResultCouple(int inputId){
 		return session.selectOne("selectResultCouple", inputId);
+	}
+
+	public int deleteCouple(int resultCoupleId) {
+		return session.delete("deleteCouple", resultCoupleId);
 	}
 
 

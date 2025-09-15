@@ -13,16 +13,12 @@ public class TravelDAO {
 
 	@Autowired
 	SqlSession session;
-	
+	/*
 	public String getMaxFiveByResultFateId(int resultFateId) throws Exception {
 		return session.selectOne("getMaxFiveByResultFateId", resultFateId);
 	}
-	/*
-	 * 유저네임 추가시
-	public TravelVO getUserNameByResultFateId(int resultFateId) throws Exception {
-		return session.selectOne("getUserNameByResultFateId", resultFateId);
-	}
 	*/
+
 	public List<TravelVO> getRecommendedByMaxFive(String maxFive) throws Exception {
 		return session.selectList("getRecommendedByMaxFive", maxFive);
 	}

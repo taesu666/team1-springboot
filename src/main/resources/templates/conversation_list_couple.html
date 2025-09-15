@@ -31,6 +31,9 @@
 					<td><a th:href="|javascript:check(${vo.resultCoupleId})|" th:text="${vo.resultCoupleId}"></a></td>
 					<td th:text="${vo.userName}"></td>
 					<td th:text="${vo.partnerName}"></td>
+					<td>
+					<button type="button" class="btn btn-secondary" th:onclick="|location.href='/couple_delete.do?resultCoupleId=${vo.resultCoupleId}'|">삭제</button>
+					</td>
 				</tr>
 
 			</table>
