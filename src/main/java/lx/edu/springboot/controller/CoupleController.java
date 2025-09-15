@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -17,6 +18,7 @@ import lx.edu.springboot.dao.PartnerDAO;
 import lx.edu.springboot.service.CoupleService;
 import lx.edu.springboot.vo.CoupleInputVO;
 import lx.edu.springboot.vo.CoupleResultVO;
+import lx.edu.springboot.vo.FateResultVO;
 import lx.edu.springboot.vo.PartnerVO;
 
 @Controller
@@ -65,6 +67,18 @@ public class CoupleController {
 	    req.setAttribute("result", list);
 	    return "/conversation_list_couple";  
 	}
+	
+	// 사주 삭제
+	@RequestMapping("/couple_delete.do")
+	public String delete(@RequestParam("resultCoupleId") int resultCoupleId, HttpServletRequest req) throws Exception {
+	    cdao.deleteCouple(resultCoupleId);
+
+	    List<CoupleResultVO> list = cdao.getCoupleList();
+	    req.setAttribute("result", list);
+
+	    return "/conversation_list_couple";
+	}
+
     	    
 
 

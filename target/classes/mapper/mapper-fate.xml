@@ -37,6 +37,10 @@
 			select RESULTFATE_ID ,USER_NAME  
 			from resultfate
 	</select>
+	
+	<delete id="deleteFate" parameterType="int">
+		delete from resultfate where RESULTFATE_ID = #{id} 
+	</delete>
 
 	
 </mapper>

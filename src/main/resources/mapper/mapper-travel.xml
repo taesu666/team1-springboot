@@ -3,6 +3,7 @@
 <mapper namespace="mapper-travel">
 	<select id="selectTravelDB" parameterType="int"
 		resultType="lx.edu.springboot.vo.TravelVO">
+
 		select 
         TRAVELID as travelId,
         MAXFIVE as maxFive,

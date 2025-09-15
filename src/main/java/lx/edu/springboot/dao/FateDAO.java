@@ -36,4 +36,7 @@ public class FateDAO {
 
 	}
 
+	public int deleteFate(int resultFateId) {
+		return session.delete("deleteFate", resultFateId);
+	}
 }
