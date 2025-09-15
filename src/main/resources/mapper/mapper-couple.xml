@@ -16,10 +16,9 @@
 		parameterType="lx.edu.springboot.vo.CoupleResultVO"
 		>
 		INSERT INTO resultcouple
-		(USER_NAME, PARTNER_NAME, SCORE, LOVE, PARTNER, TOTAL)
+		(USER_NAME, PARTNER_NAME, SCORE, LOVE, PARTNER, TOTAL, RESULT_TYPE)
 		VALUES
-		(#{userName}, #{partnerName}, #{score}, #{love}, #{partner}, #{total}
-		)
+		(#{userName}, #{partnerName}, #{score}, #{love}, #{partner}, #{total}, 2)
 	</insert>
 	
 	<!-- 리스트에 보이는 결과 가져오기 -->

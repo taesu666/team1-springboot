@@ -32,9 +32,8 @@
         <b th:text="${c.userId}">사용자</b> : <span th:text="${c.content}"></span><hr>
     </div>
 
-    <form id="conversation_form" th:action="@{/insert_conversation.do}" method="post" class="mt-4">
-        <input type="hidden" name="targetId" th:value="${targetId}" />
-        <input type="hidden" name="type" th:value="${type}" />
+    <form id="conversation_form" th:action="@{/insert_couple_conversation.do}" method="post" class="mt-4">
+        <input type="hidden" name="targetId" th:value="${coupleResultVO.resultCoupleId}" />
         <div class="mb-3">
             <label for="userId" class="form-label">이름</label>
             <input type="text" name="userId" id="userId" class="form-control" required />
