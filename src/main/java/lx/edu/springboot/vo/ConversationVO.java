@@ -3,7 +3,7 @@ package lx.edu.springboot.vo;
 
 public class ConversationVO {
     private int conversationId;   // 댓글 고유번호 (PK)
-    private String userId;        // 사용자 아이디(닉네임)
+    private String userNickName;        // 사용자 아이디(닉네임)
     private String content;       // 댓글 내용
     private int targetId;         // 화면 구분 ID (사주 몇 번째 등)
     private int type;             // 화면 타입 구분 (사주, 궁합 등)
@@ -20,11 +20,11 @@ public class ConversationVO {
         this.conversationId = conversationId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserNickName() {
+        return userNickName;
     }
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
     }
 
     public String getContent() {
