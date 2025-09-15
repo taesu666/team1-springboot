@@ -40,7 +40,11 @@ public class CoupleController {
 	PartnerDAO pdao;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> minho
 
 
 

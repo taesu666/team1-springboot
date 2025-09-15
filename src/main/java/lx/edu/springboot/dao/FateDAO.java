@@ -36,6 +36,7 @@ public class FateDAO {
 
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 
@@ -44,3 +45,6 @@ public class FateDAO {
 	}
 }
 >>>>>>> eunho
+=======
+}
+>>>>>>> minho

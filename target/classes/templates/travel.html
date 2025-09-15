@@ -8,6 +8,8 @@
 	rel="stylesheet" />
 </head>
 <body>
+	<!-- 헤더 -->
+	<div th:replace="fragments/header :: headerFragment"></div>
 	<div class="page-wrap py-4">
 		<div class="container">
 
@@ -23,8 +25,8 @@
 						<div class="text-secondary-emphasis">기운에 맞춘 맞춤 여행 추천을 준비했어요.
 						</div>
 					</div>
-					<a href="/conversation_list_fate.do" class="btn btn-light fw-bold shadow-sm">
-						사주/궁합 리스트 보기 &rarr; </a>
+					<a href="/conversation_list_fate.do"
+						class="btn btn-sand fw-bold shadow-sm"> 사주 리스트 보기 &rarr; </a>
 				</div>
 			</div>
 
@@ -92,19 +94,23 @@
 
 
 	<style>
-/* 페이지 전반 스타일 */
-.page-wrap {
-	min-height: 100vh;
-	background: #f7f8fa;
-}
 
 /* 상단 사주 배너 */
 .maxFive-banner {
-	background: linear-gradient(135deg, #7dd3fc 0%, #a7f3d0 100%);
+	background: linear-gradient(135deg, #d19a7a 0%, #efe3cf 100%);
 	border-radius: 1rem;
 	padding: 1.25rem 1.5rem;
 	color: #0f172a;
 }
+
+.maxFive-banner .btn-sand{
+  background:#efe3cf; color:#2c1b14; border:1px solid #d7c6a5;
+}
+
+.maxFive-banner .btn-sand:hover{ 
+background:#e6d6b8;
+ }
+
 
 .maxFive-title {
 	font-weight: 800;
