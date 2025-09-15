@@ -26,21 +26,30 @@
     <span id="detail" th:text="${resultVO.love}"></span>
 
     <hr>
-
-    <!-- 댓글 목록 -->
+    
     <h3>댓글 목록</h3>
     <div th:each="c : ${result}">
-        <b th:text="${c.userId}">사용자</b> : <span th:text="${c.content}">내용</span><hr>
+        <b th:text="${c.userId}">사용자</b> : <span th:text="${c.content}"></span><hr>
     </div>
 
-    <!-- 댓글 등록 폼 -->
-    <form id="conversation_form" th:action="@{/insert_fate_conversation.do}" method="post">
+    <form id="conversation_form" th:action="@{/insert_fate_conversation.do}" method="post" class="mt-4">
         <input type="hidden" name="targetId" th:value="${resultVO.resultFateId}" />
-        <input type="hidden" name="type" th:value="${type}" />
-        이름: <input type="text" name="userId" required><br>
-        내용: <textarea name="content" rows="3" required></textarea><br>
-        <button type="submit">댓글 등록</button>
+        <div class="mb-3">
+            <label for="userId" class="form-label">이름</label>
+            <input type="text" name="userId" id="userId" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <textarea name="content" id="content" rows="3" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">댓글 등록</button>
     </form>
+
+    <div class="mt-4 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" onclick="location.href='/fate_input_form.do'">다시 입력하기</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='/conversation_list_fate.do'">목록으로 가기</button>
+    </div>
+</div>
 
     <a href="/conversation_list_fate.do">리스트로</a>
 </div>

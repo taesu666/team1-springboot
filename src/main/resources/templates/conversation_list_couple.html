@@ -35,14 +35,16 @@
 
 			</table>
 		</form>
+		<div class="mt-4 d-flex justify-content-between">
+	        <button type="button" class="btn btn-secondary" onclick="location.href='/conversation_select.do'">이전 화면으로</button>
+	    </div>
 	</div>
 
 	<script type="text/javascript">
-		$('tr').on('click', function() {
-			//ab_id
-			let abId = ($(this).find('a').text());
-			document.location.href = "edit.do?abId=" + abId;
-		});
+	function check(resultCoupleId) {
+		document.location.href = "conversation_result_couple.do?resultCoupleId="
+				+ resultCoupleId;
+	}
 	</script>
 
 </body>

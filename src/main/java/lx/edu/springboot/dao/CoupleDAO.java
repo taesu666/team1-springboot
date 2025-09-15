@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import lx.edu.springboot.vo.CoupleInputVO;
 import lx.edu.springboot.vo.CoupleResultVO;
+import lx.edu.springboot.vo.FateResultVO;
 
 
 @Repository
@@ -31,5 +32,13 @@ public class CoupleDAO {
 	public List<CoupleResultVO> getCoupleList() {
 		return session.selectList("getCoupleList");
 	}
+
+
+	public CoupleResultVO selectResultCouple(int inputId){
+		return session.selectOne("selectResultCouple", inputId);
+	}
+
+
+
 
 }
