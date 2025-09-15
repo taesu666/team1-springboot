@@ -51,6 +51,7 @@ public class FateController {
  		req.setAttribute("detail", resultVO.getLove());
 		return "fate_result_form";
 	}
+<<<<<<< HEAD
     
 	// 사주 목록
 	@RequestMapping("/list_fate.do")
@@ -60,6 +61,21 @@ public class FateController {
 	    return "list_fate";  
 	}
 
+=======
+	// 사주 목록
+	@RequestMapping("/conversation_list_fate.do")
+	public String list(HttpServletRequest req) throws Exception {
+	    List<FateResultVO> list = dao.getFateList();
+    req.setAttribute("result", list);
+	    return "/conversation_list_fate";  
+	}
+
+	
+	@GetMapping("/select.do")
+	public String form() {
+	    return "select";
+	}
+>>>>>>> byeongiu
 	
 	@GetMapping("/select.do")
 	public String form() {

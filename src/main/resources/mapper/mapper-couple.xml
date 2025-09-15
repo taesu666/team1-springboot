@@ -37,7 +37,25 @@
 			select RESULTCOUPLE_ID ,USER_NAME, PARTNER_NAME
 			from resultcouple
 	</select>
+<<<<<<< HEAD
 	
+=======
+
+	
+
+		<!-- 파트너 전체 리스트 가져오기 -->
+	<select id="selectAllPartners"
+		resultType="lx.edu.springboot.vo.PartnerVO">
+		SELECT
+		PARTNER_ID AS partnerID,
+		PARTNER_NAME AS partnerName,
+		PARTNER_BIRTH AS partnerBirth,
+		PARTNER_GENDER AS partnerGender,
+		PARTNER_TIME AS partnerTime
+		FROM project1.partnerinfo
+	</select>
+
+>>>>>>> byeongiu
 
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 
 		ab_id = #{abId} </delete> -->

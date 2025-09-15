@@ -12,21 +12,22 @@
 				<!-- 로고/브랜드명 -->
 				<a class="border border-danger navbar-brand me-auto" href="/home">
 					<img th:src="@{/image/logo.png}" alt="로고" width="60">
-					
 				</a>
 				
 				<!-- 네비게이션 메뉴 -->
-				<div class="border border-danger navbar-nav mx-auto d-flex flex-row p-2 gap-2">
-					<a class="border border-success " href="/">사주보기</a>
-					<a class="border border-success" href="/">궁합보기</a>
-					<a class="border border-success " href="/">여행지추천</a>
-					<a class="border border-success " href="/">결과보기</a>
+				<div class="border border-danger navbar-nav mx-auto d-flex flex-row p-2 gap-2 column-gap-5">
+					<a class="border border-success text-decoration-none text-white" href="/fate">사주보기</a>
+					<a class="border border-success text-decoration-none text-white" href="/couple">궁합보기</a>
+					<a class="border border-success text-decoration-none text-white" href="/result">결과보기</a>
 				</div>
 
 				<!-- 로그인 -->
 				<div class="border border-danger navbar-nav ms-auto d-flex flex-row p-2 gap-2">
-					<a class="border border-success" href="/login">로그인</a>
-					<a class="border border-success" href="/register">회원가입</a>
+					<a class="border border-success text-decoration-none text-white" href="/login">로그인</a>
+					<a class="border border-success text-decoration-none text-white" href="/register">회원가입</a>
+				</div>
+				<div>
+
 				</div>
 			</div>
 		</nav>

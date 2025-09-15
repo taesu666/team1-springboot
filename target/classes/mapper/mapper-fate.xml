@@ -16,7 +16,7 @@
             	HEALTH health,
             	JOB job
 		from resultfate
-		where RESULTFATE_ID = #{value}
+		where RESULTFATE_ID = #{id}
 	</select>
 	
 

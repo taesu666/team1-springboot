@@ -18,6 +18,12 @@ public class ConversationDAO {
 		return session.insert("insertConversation", ab);
 	}
 	
+<<<<<<< HEAD
+=======
+	public List<ConversationVO> getDBList(int targetId, int type) throws Exception {
+		return session.selectList("getDBList");
+	}
+>>>>>>> byeongiu
 
 	public List<ConversationVO> getConversationList(int targetId) {
 		return session.selectList("getConversationList", targetId);
