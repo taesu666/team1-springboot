@@ -33,6 +33,7 @@ public class LoginController {
 		return "redirect:/login";
 	}
 
+
 //	@PostMapping("/doLogin") 
 //	public String doLogin(@RequestParam String userId, @RequestParam String userPassword, HttpSession session,	Model model) {
 //	boolean success = dao.doLogin(userId, userPassword);
@@ -44,4 +45,5 @@ public class LoginController {
 //        	return "login";
 //		}
 //	}
+
 }

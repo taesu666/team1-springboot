@@ -1,3 +1,5 @@
+<!-- 보물찾기 -->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
@@ -18,33 +20,32 @@
 		<div th:replace="fragments/header :: headerFragment"></div>
 
 		<div class="col-12 d-flex flex-column align-items-center"> 
+			
 			<!-- 로그인 창 -->
 			<H2>사주세요:회원가입</H2>
-			<form name="register" method="post" action="/insertLogin.do" 
-			class="col-4 d-flex flex-column border border-primary align-items-center padding-3">
+
+			<form name="register" method="post" action="/insertLogin.do" class="col-4 d-flex flex-column border border-primary align-items-center p-3">
 				
 				<div class="d-flex flex-row border border-primary">				
-					<input type="text" placeholder="아이디를 입력하세요"name="userId" th:value="${vo.userName}">
+					<input type="text" placeholder="아이디를 입력하세요" name="userId" th:value="${vo.userName}">
 				</div>
 
 				<div class="d-flex flex-row border border-primary">	
-				<input type="text" placeholder="비밀번호를 입력하세요"name="userPassword" th:value="${vo.userPassword}">
+					<input type="text" placeholder="비밀번호를 입력하세요" name="userPassword" th:value="${vo.userPassword}">
 				</div>
 
 				<div class="d-flex flex-row border border-primary">	
-				<input type="text" placeholder="닉네임을 입력하세요"name="userName" th:value="${vo.userName}">
+					<input type="text" placeholder="닉네임을 입력하세요" name="userName" th:value="${vo.userName}">
 				</div>
 
 				<div class="d-flex flex-row border border-primary">	
-					<td colspan=2>
-						<input type=button value="저장">
-					</td>
+					<input type="submit" value="저장">
 				</div>
 			</form>
 			
-			<div class="d-flex flex-row">
-				
+			<div class="d-flex flex-row">	
 			</div>
+
 			<div class="d-flex flex-row">
 			</div>
 		</div>
