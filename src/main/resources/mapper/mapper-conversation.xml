@@ -15,18 +15,6 @@
 	</select>
 
 
-	<select id="getConversationList" resultType="lx.edu.springboot.vo.ConversationVO" parameterType="int">
-		select USER_ID, CONTENT
-		from conversation
-		where TARGET_ID = #{value}
-	</select>
-	
-	<insert id="insertConversation" parameterType="lx.edu.springboot.vo.ConversationVO">
-		insert into conversation(USER_ID, CONTENT, TARGET_ID)
-        VALUES(#{userId}, #{content}, #{targetId})
-	</insert>
-	
-
 
 
 	<insert id="insertConversation"
@@ -36,6 +24,7 @@
 		VALUES(#{userId}, #{content}, #{targetId}, #{type},
 		#{loginId})
 	</insert>
+	
 	<select id="getDBList"
 		resultType="lx.edu.springboot.vo.ConversationVO">
 		SELECT * FROM conversation WHERE target_id = #{targetId} AND type = #{type}

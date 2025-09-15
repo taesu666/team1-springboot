@@ -5,12 +5,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
-<script type="text/javascript">
-	function check(resultcoupleID) {
-		document.location.href = "addrbook_edit.do?resultcoupleID="
-				+ resultcoupleID;
-	}
-</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>궁합 결과 리스트</title>
 </head>
@@ -32,12 +27,12 @@
 				</tr>
 
 				<tr th:each="vo : ${result}">
-<<<<<<< HEAD:src/main/resources/templates/list_couple.html
+
 					<td><a th:href="|javascript:check(${vo.resultCoupleId})|" th:text="${vo.resultCoupleId}"></a></td>
-=======
+
 					<td><a th:href="|javascript:check(${vo.resultCoupleId})|"
 						th:text="${vo.resultCoupleId}"></a></td>
->>>>>>> byeongiu:src/main/resources/templates/conversation_list_couple.html
+
 					<td th:text="${vo.userName}"></td>
 					<td th:text="${vo.partnerName}"></td>
 				</tr>

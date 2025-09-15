@@ -40,13 +40,7 @@ public class ConversationController {
 		return "addrbook_form"; // jsp file name
 	}
 
-    // 개별 사주 결과 상세 페이지
-	/*
-	 * @GetMapping("/conversation_result_fate.do") public String
-	 * resultFate(@RequestParam("resultfateId") int resultfateId, Model model) {
-	 * ConversationVO vo = dao.selectFateDBlist(resultfateId);
-	 * model.addAttribute("result", vo); return "conversation_result_fate"; }
-	 */
+
 
 
 }
