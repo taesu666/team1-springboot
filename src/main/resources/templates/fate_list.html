@@ -1,40 +1,91 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>사주 결과 리스트</title>
-<link rel="stylesheet" href="css/conversation.css" type="text/css"
-	media="screen" />
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>사주 결과 리스트</title>
 
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- (선택) 기존 CSS/JS 유지 -->
+  <link rel="stylesheet" href="css/conversation.css" type="text/css" media="screen" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <style>
+    .table thead th { white-space: nowrap; }
+    .col-id { width: 120px; }
+  </style>
 </head>
+
 <body>
-	<div align="center">
-		<h2>사주 결과 리스트</h2>
-		<hr>
-		<table border="1">
-			<tr>
-				<th>번호</th>
-				<th>이 름</th>
-			</tr>
-			<tr th:each="vo : ${result}">
-				<td><a th:href="|javascript:check(${vo.resultFateId})|"
-					th:text="${vo.resultFateId}"></a></td>
-				<td th:text="${vo.userName}"></td>
-				<td>
-				<button type="button" class="btn btn-secondary" th:onclick="|location.href='/fate_delete.do?resultFateId=${vo.resultFateId}'|">삭제</button>
-				</td>
-			</tr>
-		</table>
-		
-		<div class="mt-4 d-flex justify-content-between">
-        	<button type="button" class="btn btn-secondary" onclick="location.href='/result_select.do'">이전 화면으로</button>
-	    </div>
-	</div>
-	<script type="text/javascript">
-		function check(resultfateID) {
-			document.location.href = "fate_result_conversation.do?resultfateId=" + resultfateID;
-		}
-	</script>
+  <!-- 헤더 (공통 프래그먼트 불러오기) -->
+  <div th:replace="fragments/header :: headerFragment"></div>
+
+  <div class="container py-4">
+    <!-- 제목 + 액션 -->
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2 class="h4 m-0">사주 결과 리스트</h2>
+      <a href="/result_select.do" class="btn btn-outline-secondary">이전 화면으로</a>
+    </div>
+
+    <!-- 요약 배지 -->
+    <div class="mb-3 text-secondary">
+      총 <span class="badge text-bg-success" th:text="${#lists.size(result)}">0</span> 건
+    </div>
+
+    <!-- 리스트 카드 -->
+    <div class="card shadow-sm">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="col-id">번호</th>
+                <th>이름</th>
+                <th class="text-end">동작</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="vo : ${result}">
+                <!-- 번호: 상세로 이동 -->
+                <td>
+                  <a class="text-decoration-none fw-semibold"
+                     th:href="@{/conversation_result_fate.do(resultfateId=${vo.resultFateId})}"
+                     th:text="${vo.resultFateId}">1</a>
+                </td>
+                <!-- 이름 -->
+                <td th:text="${vo.userName}">홍길동</td>
+                <!-- 삭제 버튼 -->
+                <td class="text-end">
+                  <button type="button"
+                          class="btn btn-outline-danger btn-sm"
+                          th:attr="data-id=${vo.resultFateId}">
+                    삭제
+                  </button>
+                </td>
+              </tr>
+              <tr th:if="${#lists.isEmpty(result)}">
+                <td colspan="3" class="text-center text-secondary py-4">
+                  데이터가 없습니다.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 삭제 확인 스크립트 -->
+  <script>
+    $(document).on('click', '.btn.btn-outline-danger', function () {
+      const id = $(this).data('id');
+      if (confirm(`정말 삭제할까요? (ID: ${id})`)) {
+        location.href = `/fate_delete.do?resultFateId=${id}`;
+      }
+    });
+  </script>
 </body>
 </html>

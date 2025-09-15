@@ -1,78 +1,77 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>사주 상세 및 대화</title>
+	<meta charset="UTF-8">
+	<title>사주 상세 및 대화</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-	<div align="center">
+<body class="bg-light">
+	<div class="container py-5">
+		
 		<!-- 사주 상세 정보 -->
-		<h2>사주 상세 결과</h2>
-		<p>
-			username: <span th:text="${resultVO.userName}"></span>
-		</p>
-		<p>
-			tree: <span th:text="${resultVO.tree}"></span>
-		</p>
-		<p>
-			fire: <span th:text="${resultVO.fire}"></span>
-		</p>
-		<p>
-			soil: <span th:text="${resultVO.soil}"></span>
-		</p>
-		<p>
-			steel: <span th:text="${resultVO.steel}"></span>
-		</p>
-		<p>
-			water: <span th:text="${resultVO.water}"></span>
-		</p>
-		<p>
-			total: <span th:text="${resultVO.total}"></span>
-		</p>
+		<div class="card shadow-sm mb-4">
+			<div class="card-body">
+				<h2 class="card-title mb-4 text-center">사주 상세 결과</h2>
+				<ul class="list-group list-group-flush mb-4">
+					<li class="list-group-item">username: <span th:text="${resultVO.userName}"></span></li>
+					<li class="list-group-item">tree: <span th:text="${resultVO.tree}"></span></li>
+					<li class="list-group-item">fire: <span th:text="${resultVO.fire}"></span></li>
+					<li class="list-group-item">soil: <span th:text="${resultVO.soil}"></span></li>
+					<li class="list-group-item">steel: <span th:text="${resultVO.steel}"></span></li>
+					<li class="list-group-item">water: <span th:text="${resultVO.water}"></span></li>
+					<li class="list-group-item">total: <span th:text="${resultVO.total}"></span></li>
+				</ul>
 
-		<select name="fateOption" id="fateOption"
-			onchange="handleOnChange(this)">
-			<option value="love">연애운</option>
-			<option value="health">건강운</option>
-			<option value="money">재물운</option>
-			<option value="job">직업운</option>
-		</select>
+				<div class="mb-3">
+					<label for="fateOption" class="form-label">운세 선택</label>
+					<select class="form-select" id="fateOption" onchange="handleOnChange(this)">
+						<option value="love">연애운</option>
+						<option value="health">건강운</option>
+						<option value="money">재물운</option>
+						<option value="job">직업운</option>
+					</select>
+				</div>
 
-		<p>운세 결과:</p>
-		<span id="detail" th:text="${resultVO.love}"></span>
-
-		<hr>
-
-		<h3>댓글 목록</h3>
-		<div th:each="c : ${result}">
-			<b th:text="${c.userNickName}">사용자</b> : <span th:text="${c.content}"></span>
-			<hr>
-		</div>
-
-		<form id="conversation_form"
-			th:action="@{/insert_fate_conversation.do}" method="post"
-			class="mt-4">
-			<input type="hidden" name="targetId"
-				th:value="${resultVO.resultFateId}" />
-			<!-- 세션에서 받아온 닉네임을 hidden 필드로 전달 -->
-			<input type="hidden" name="userNickName" th:value="${userNickName}" />
-			<div class="mb-3">
-				<label for="content" class="form-label">내용</label>
-				<textarea name="content" id="content" rows="3" class="form-control"
-					required></textarea>
+				<div class="alert alert-info">
+					<strong>운세 결과:</strong>
+					<span id="detail" th:text="${resultVO.love}"></span>
+				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">댓글 등록</button>
-		</form>
-
-		<div class="mt-4 d-flex justify-content-between">
-			<button type="button" class="btn btn-secondary"
-				onclick="location.href='/fate_input_form.do'">다시 입력하기</button>
-			<button type="button" class="btn btn-secondary"
-				onclick="location.href='/conversation_list_fate.do'">목록으로
-				가기</button>
 		</div>
-	</div>
 
-	<a href="/conversation_list_fate.do">리스트로</a>
+		<!-- 댓글 목록 -->
+		<div class="card shadow-sm mb-4">
+			<div class="card-body">
+				<h3 class="card-title mb-3">댓글 목록</h3>
+				<div th:each="c : ${result}" class="border-bottom py-2">
+					<b th:text="${c.userNickName}">사용자</b> : 
+					<span th:text="${c.content}"></span>
+				</div>
+			</div>
+		</div>
+
+		<!-- 댓글 작성 -->
+		<div class="card shadow-sm mb-4">
+			<div class="card-body">
+				<h4 class="mb-3">댓글 작성</h4>
+				<form id="conversation_form" th:action="@{/insert_fate_conversation.do}" method="post">
+					<input type="hidden" name="targetId" th:value="${resultVO.resultFateId}" />
+					<input type="hidden" name="userNickName" th:value="${userNickName}" />
+
+					<div class="mb-3">
+						<label for="content" class="form-label">내용</label>
+						<textarea name="content" id="content" rows="3" class="form-control" required></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">댓글 등록</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- 이동 버튼 -->
+		<div class="d-flex justify-content-between">
+			<a href="/fate_input_form.do" class="btn btn-secondary">다시 입력하기</a>
+			<a href="/conversation_list_fate.do" class="btn btn-secondary">목록으로 가기</a>
+		</div>
 	</div>
 
 	<script th:inline="javascript">
