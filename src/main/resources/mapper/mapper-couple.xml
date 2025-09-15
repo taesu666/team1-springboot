@@ -51,12 +51,6 @@
 		where RESULTCOUPLE_ID = #{id}
 	</select>
 	
-<<<<<<< HEAD
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 
 		ab_id = #{abId} </delete> -->
-=======
-	<delete id="deleteCouple" parameterType="int">
-		delete from resultcouple where RESULTCOUPLE_ID = #{id} 
-	</delete>
->>>>>>> eunho
 </mapper>

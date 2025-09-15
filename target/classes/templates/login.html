@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 	<link rel="stylesheet" href="/css/home.css" type="text/css" media="screen" />
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<<<<<<< HEAD
  -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -31,35 +30,9 @@
 
 			<div class="col-4 d-flex flex-row border border-primary">
 	<input type="text" placeholder="아이디를 입력하세요" name="userId" th:value="${vo.userId ?: ''}" />
-=======
- -->		
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-		
-	</head>
-	
-	<body>
-		<!-- 헤더 -->
-		<div th:replace="fragments/header :: headerFragment"></div>
-
-		<div class="col-12 d-flex flex-column align-items-center"> 
-			<!-- 로그인 창 -->
-			<div class="title-box border border-primary">입장</div>
-			<form name="login" method="post" action="/doLogin" class="col-4 d-flex flex-column border border-primary align-items-center p-3 gap-3 fs-1">
-				
-				<div class="d-flex flex-row border border-primary">				
-					<input type="text" placeholder="아이디를 입력하세요" name="userId" th:value="${vo.userName}">
-				</div>
-
-				<div class="d-flex flex-row border border-primary">	
-					<input type="text" placeholder="비밀번호를 입력하세요" name="userPassword" th:value="${vo.userPassword}">
-				</div>
->>>>>>> f758010a54747562d6413850c3642604e5ea0c9c
 
 			</div>
 
-<<<<<<< HEAD
 			<div class="col-4 d-flex flex-row border border-primary">
 <input type="text" placeholder="비밀번호를 입력하세요" name="userPassword" th:value="${vo.userPassword ?: ''}" />
 
@@ -76,63 +49,5 @@
 
 </body>
 
-=======
-	</body>
-	
-	<style scoped>
-		.scroll-container {
-		max-width: 500px;
-		margin: 0 auto;
-		}
-
-		.scroll-paper {
-		background: linear-gradient(45deg, #f8f4e6, #f0e8d0) !important;
-		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-		border-color: #8b4513 !important;
-		}
-
-		.scroll-left, .scroll-right {
-		width: 40px;
-		height: 80px;
-		background: linear-gradient(to right, #d2b48c, #8b7355);
-		border-radius: 50px;
-		top: 50%;
-		transform: translateY(-50%);
-		box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-		}
-
-		.scroll-left {
-		left: -20px;
-		}
-
-		.scroll-right {
-		right: -20px;
-		}
-
-		.scroll-left::before, .scroll-right::before {
-		content: '';
-		position: absolute;
-		width: 20px;
-		height: 20px;
-		background: #8b7355;
-		border-radius: 50%;
-		top: -10px;
-		left: 50%;
-		transform: translateX(-50%);
-		}
-
-		.scroll-left::after, .scroll-right::after {
-		content: '';
-		position: absolute;
-		width: 20px;
-		height: 20px;
-		background: #8b7355;
-		border-radius: 50%;
-		bottom: -10px;
-		left: 50%;
-		transform: translateX(-50%);
-		}
-	</style>
->>>>>>> f758010a54747562d6413850c3642604e5ea0c9c
 
 </html>

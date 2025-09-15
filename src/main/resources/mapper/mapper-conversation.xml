@@ -6,69 +6,9 @@
 
 	<insert id="insertFateConversation"
 		parameterType="lx.edu.springboot.vo.ConversationVO">
-<<<<<<< HEAD
 		INSERT INTO conversation(user_nickname, content, target_id, type, login_id)
 		VALUES(#{userNickName}, #{content}, #{targetId}, 1, #{loginId})
 	</insert>
-=======
-		INSERT INTO conversation(user_id, content, target_id, type, login_id)
-		VALUES(#{userId}, #{content}, #{targetId}, 1, #{loginId})
-	</insert>
-
-
-<<<<<<< HEAD
-	<select id="getConversationListByFateId" parameterType="int" resultType="lx.edu.springboot.vo.ConversationVO">
-	    SELECT c.conversation_id,
-	           c.user_id,
-	           c.content,
-	           f.RESULTFATE_ID   AS target_id,
-	           f.RESULT_TYPE           AS type,
-	           c.login_id
-	    FROM conversation c
-	    JOIN resultFate f ON c.target_id = f.RESULTFATE_ID
-	    WHERE f.RESULTFATE_ID = #{resultFateId}
-	    AND c.type = 1
-	    
-	 </select>
-	
-	<select id="getConversationListByCoupleId" parameterType="map" resultType="lx.edu.springboot.vo.ConversationVO">	
-	    SELECT c.conversation_id,
-	           c.user_id,
-	           c.content,
-	           r.RESULTCOUPLE_ID AS target_id,
-	           r.RESULT_TYPE           AS type,
-	           c.login_id
-	    FROM conversation c
-	    JOIN resultCouple r ON c.target_id = r.RESULTCOUPLE_ID	
-	    WHere r.RESULTCOUPLE_ID = #{conversationId}
-	    AND c.type = 2
-	</select>
-	
-	<insert id="insertCoupleConversation"
-=======
-
-
-	<insert id="insertConversation"
->>>>>>> byeongiu
-		parameterType="lx.edu.springboot.vo.ConversationVO">
-		INSERT INTO conversation(user_id, content, target_id, type, login_id)
-		VALUES(#{userId}, #{content}, #{targetId}, 2, #{loginId})
-	</insert>
-<<<<<<< HEAD
-=======
-	
-	<select id="getDBList"
-		resultType="lx.edu.springboot.vo.ConversationVO">
-		SELECT * FROM conversation WHERE target_id = #{targetId} AND type = #{type}
-	</select>
-<select id="getConversationListByFateId" parameterType="int" resultType="lx.edu.springboot.vo.ConversationVO">
-    SELECT conversation_id, user_id, content, target_id, type, login_id
-    FROM conversation
-    WHERE target_id = #{inputId}
-    ORDER BY conversation_id DESC
-</select>
->>>>>>> byeongiu
->>>>>>> f758010a54747562d6413850c3642604e5ea0c9c
 
 
 	<select id="getConversationListByFateId" parameterType="int" resultType="lx.edu.springboot.vo.ConversationVO">

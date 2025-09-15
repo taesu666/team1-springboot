@@ -9,7 +9,7 @@ public class ConversationVO {
     private int type;             // 화면 타입 구분 (사주, 궁합 등)
     private int loginId;          // 로그인 유저 고유번호 (정수)
 // 작성 시간
-    
+
     public ConversationVO() {}
 
     // getter/setter
@@ -55,9 +55,5 @@ public class ConversationVO {
         this.loginId = loginId;
     }
 
-<<<<<<< HEAD
-=======
     
-
->>>>>>> eunho
 }
