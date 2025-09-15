@@ -22,11 +22,11 @@ public class LoginController {
 	@Autowired
 	LoginDAO dao;
 	
-	@RequestMapping("/insertLogin.do")
+	@PostMapping("/insertLogin.do")
 	public String insertLoginDB(LoginVO vo) throws Exception { 
 		System.out.println(vo);
 		dao.insertLoginDB(vo);
-		return "login";
+		return "redirect:/login";
 	}
 	
 	@RequestMapping("/updateLogin.do")
