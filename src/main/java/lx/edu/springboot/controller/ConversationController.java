@@ -22,19 +22,18 @@ public class ConversationController {
 	@Autowired
 	ConversationDAO dao;
 
-<<<<<<< HEAD
-=======
+
 	@GetMapping("/conversation_select")
 	public String form2() {
 		return "conversation_select";
 	}
 	
-	@RequestMapping("/insert.do")
-	public String insert(ConversationVO vo) throws Exception {
-		System.out.println(vo);
-		dao.insertDB(vo);
-		return "redirect:addrbook_list.do";
-	}
+//	@RequestMapping("/insert.do")
+//	public String insert(ConversationVO vo) throws Exception {
+//		System.out.println(vo);
+//		dao.insertDB(vo);
+//		return "redirect:addrbook_list.do";
+//	}
 
 	@RequestMapping("/addrbook_form.do")
 	public String form() {
@@ -49,5 +48,5 @@ public class ConversationController {
 	 * model.addAttribute("result", vo); return "conversation_result_fate"; }
 	 */
 
->>>>>>> byeongiu
+
 }

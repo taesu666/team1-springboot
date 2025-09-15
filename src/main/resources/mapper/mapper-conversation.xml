@@ -12,8 +12,9 @@
 		FROM conversation
 		WHERE target_id = #{targetId} AND type
 		= #{type}
+	</select>
 
-<<<<<<< HEAD
+
 	<select id="getConversationList" resultType="lx.edu.springboot.vo.ConversationVO" parameterType="int">
 		select USER_ID, CONTENT
 		from conversation
@@ -25,8 +26,8 @@
         VALUES(#{userId}, #{content}, #{targetId})
 	</insert>
 	
-=======
-	</select>
+
+
 
 	<insert id="insertConversation"
 		parameterType="lx.edu.springboot.vo.ConversationVO">
@@ -45,6 +46,5 @@
     WHERE target_id = #{inputId}
     ORDER BY conversation_id DESC
 </select>
->>>>>>> byeongiu
 
 </mapper>

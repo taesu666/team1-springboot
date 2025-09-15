@@ -9,43 +9,7 @@ public class ConversationVO {
     private int type;             // 화면 타입 구분 (사주, 궁합 등)
     private int loginId;          // 로그인 유저 고유번호 (정수)
 // 작성 시간
-
-<<<<<<< HEAD
-    int conversationId;
-    String userId;
-    String content;
-    int targetId;
     
-    
-	public int getConversationId() {
-		return conversationId;
-	}
-	public void setConversationId(int conversationId) {
-		this.conversationId = conversationId;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public int getTargetId() {
-		return targetId;
-	}
-	public void setTargetId(int targetId) {
-		this.targetId = targetId;
-	}
-    
-    
-
-
-=======
     public ConversationVO() {}
 
     // getter/setter
@@ -92,5 +56,5 @@ public class ConversationVO {
     }
 
     
->>>>>>> byeongiu
+
 }

@@ -37,9 +37,7 @@
 			select RESULTCOUPLE_ID ,USER_NAME, PARTNER_NAME
 			from resultcouple
 	</select>
-<<<<<<< HEAD
-	
-=======
+
 
 	
 
@@ -55,7 +53,7 @@
 		FROM project1.partnerinfo
 	</select>
 
->>>>>>> byeongiu
+
 
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 
 		ab_id = #{abId} </delete> -->

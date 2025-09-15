@@ -26,9 +26,9 @@ public class ConversationController2 {
                              @RequestParam(value="targetId", required=false, defaultValue="0") int targetId,
                              @RequestParam(value="type", required=false, defaultValue="0") int type,
                              Model model) {
-        // 1. 사주 상세 데이터 조회 (resultfateId 사용)
-        FateResultVO detail = fateDao.selectResultFate(resultfateId);
-        model.addAttribute("resultVO", detail);
+//        // 1. 사주 상세 데이터 조회 (resultfateId 사용)
+//        FateResultVO detail = fateDao.selectResultFate(resultfateId);
+//        model.addAttribute("resultVO", detail);
 
         // 2. 댓글 리스트 조회 (targetId, type 사용)
         List<ConversationVO> list = conversationService.getConversationList(targetId, type);

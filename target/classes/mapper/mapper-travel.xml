@@ -3,17 +3,7 @@
 <mapper namespace="mapper-travel">
 	<select id="selectTravelDB" parameterType="int"
 		resultType="lx.edu.springboot.vo.TravelVO">
-<<<<<<< HEAD
-		select travel_id
-		,maxFive
-		,travel_name
-		,travel_location
-		,travel_description
-		,travel_image
-		,bad
-		from travel
-		where travel_id = #{travelId}
-=======
+
 		select 
         TRAVELID as travelId,
         MAXFIVE as maxFive,
@@ -24,7 +14,6 @@
         BAD as bad
     from travel
     where TRAVELID = #{travelId}
->>>>>>> byeongiu
 	</select>
 	<select id="getMaxFiveByResultFateId" parameterType="int"
 		resultType="string">

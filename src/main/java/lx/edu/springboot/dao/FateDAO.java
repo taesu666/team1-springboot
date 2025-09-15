@@ -37,9 +37,7 @@ public class FateDAO {
 	}
 
 
-	public List<FateResultVO> getFateList() {
-		return session.selectList("getFateList");
+
 
 	}
 
-}

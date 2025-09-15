@@ -17,11 +17,11 @@ import lx.edu.springboot.dao.PartnerDAO;
 import lx.edu.springboot.service.CoupleService;
 import lx.edu.springboot.vo.CoupleInputVO;
 import lx.edu.springboot.vo.CoupleResultVO;
-<<<<<<< HEAD
+
 import lx.edu.springboot.vo.FateResultVO;
-=======
+
 import lx.edu.springboot.vo.PartnerVO;
->>>>>>> byeongiu
+
 
 @Controller
 public class CoupleController {
@@ -29,16 +29,18 @@ public class CoupleController {
 	CoupleService coupleService;
 
 	@Autowired
-<<<<<<< HEAD
 	CoupleDAO cdao;
-
+	
+	@Autowired
+	PartnerDAO pdao;
+	
 	@GetMapping("/coupleinput")
 	public String showInput() {
 		return "couple_input";
-=======
-	PartnerDAO pdao;
-	@Autowired
-	CoupleDAO cdao;
+	}
+	
+
+
 
 	@GetMapping("/coupleinput")
 	public String showInput(Model model) {
@@ -49,7 +51,7 @@ public class CoupleController {
 		model.addAttribute("partners", partners);
 
 		return "couple_input"; // 뷰 이름
->>>>>>> byeongiu
+
 	}
 
 	@PostMapping("/coupleInputInsert")
@@ -70,7 +72,7 @@ public class CoupleController {
 
 		return "couple_result";
 	}
-<<<<<<< HEAD
+
 
 	// 사주 목록
 	@RequestMapping("/list_couple.do")
@@ -83,13 +85,13 @@ public class CoupleController {
 
     	
    
-    }
+    
 
 
-=======
+
 	
 	@RequestMapping("/conversation_list_couple.do")
-	public String list(HttpServletRequest req) throws Exception {
+	public String list2(HttpServletRequest req) throws Exception {
 	    List<CoupleResultVO> list = cdao.getCoupleList();
 	    req.setAttribute("result", list);
 	    return "/conversation_list_couple";  
@@ -98,4 +100,4 @@ public class CoupleController {
 
 
 }
->>>>>>> byeongiu
+
