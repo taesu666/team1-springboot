@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-conversation">
+
+	<select id="getConversationList"
+		resultType="lx.edu.springboot.vo.ConversationVO"
+		parameterType="lx.edu.springboot.vo.ConversationVO">
+		SELECT conversation_id, user_id, content, target_id,
+		type, login_id
+		FROM conversation
+		WHERE target_id = #{targetId} AND type
+		= #{type}
+
+	</select>
+
+	<insert id="insertConversation"
+		parameterType="lx.edu.springboot.vo.ConversationVO">
+		INSERT INTO conversation(user_id, content, target_id,
+		type, login_id)
+		VALUES(#{userId}, #{content}, #{targetId}, #{type},
+		#{loginId})
+	</insert>
+	<select id="getDBList"
+		resultType="lx.edu.springboot.vo.ConversationVO">
+		SELECT * FROM conversation WHERE target_id = #{targetId} AND type = #{type}
+	</select>
+<select id="getConversationListByFateId" parameterType="int" resultType="lx.edu.springboot.vo.ConversationVO">
+    SELECT conversation_id, user_id, content, target_id, type, login_id
+    FROM conversation
+    WHERE target_id = #{inputId}
+    ORDER BY conversation_id DESC
+</select>
+
+</mapper>

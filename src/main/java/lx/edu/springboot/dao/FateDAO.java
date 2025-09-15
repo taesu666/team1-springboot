@@ -30,5 +30,10 @@ public class FateDAO {
 		return session.selectOne("selectResultFate", inputId);
 	}
 
-	
+
+	public List<FateResultVO> getFateList() {
+		return session.selectList("getFateList");
+
+	}
+
 }

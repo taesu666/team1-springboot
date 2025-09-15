@@ -2,14 +2,24 @@ package lx.edu.springboot.vo;
 
 public class CoupleResultVO {
   
-	private int resultCoupleId;
-    private String userName;
-    private String partnerName;
-    private int score;
-    private String love;
-    private String partner;
-    private String total;
-    private int inputCoupleId; // FK (INPUTCOUPLE 참조)
+	 int resultCoupleId;
+     String userName;
+     String partnerName;
+     int score;
+     String love;
+     String partner;
+     String total;
+     int result_type;
+    
+     
+     public int getResult_type() {
+		return result_type;
+	}
+	public void setResult_type(int result_type) {
+		this.result_type = result_type;
+	}
+
+	int inputCoupleId; // FK (INPUTCOUPLE 참조)
 
     // getter/setter
     public int getResultCoupleId() {
@@ -62,9 +72,9 @@ public class CoupleResultVO {
     }
     
     @Override
-  	public String toString() {
-  		return "CoupleResultVO [resultCoupleId=" + resultCoupleId + ", userName=" + userName + ", partnerName="
-  				+ partnerName + ", score=" + score + ", love=" + love + ", partner=" + partner + ", total=" + total
-  				+ ", inputCoupleId=" + inputCoupleId + "]";
-  	}
+	public String toString() {
+		return "CoupleResultVO [resultCoupleId=" + resultCoupleId + ", userName=" + userName + ", partnerName="
+				+ partnerName + ", score=" + score + ", love=" + love + ", partner=" + partner + ", total=" + total
+				+ ", result_type=" + result_type + ", inputCoupleId=" + inputCoupleId + "]";
+	}
 }

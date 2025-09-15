@@ -13,9 +13,24 @@ public class FateResultVO {
 	String total;
 	String love;
 	String money;
+	@Override
+	public String toString() {
+		return "FateResultVO [resultFateId=" + resultFateId + ", userName=" + userName + ", maxFive=" + maxFive
+				+ ", tree=" + tree + ", fire=" + fire + ", soil=" + soil + ", steel=" + steel + ", water=" + water
+				+ ", total=" + total + ", love=" + love + ", money=" + money + ", health=" + health + ", job=" + job
+				+ ", resultType=" + resultType + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 	String health;
 	String job;
+	int resultType;
 	
+	public int getResultType() {
+		return resultType;
+	}
+	public void setResultType(int resultType) {
+		this.resultType = resultType;
+	}
 	
 	public int getResultFateId() {
 		return resultFateId;
