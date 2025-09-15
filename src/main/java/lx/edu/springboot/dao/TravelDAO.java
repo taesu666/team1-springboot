@@ -1,4 +1,4 @@
-package lx.myproject.dao;
+package lx.edu.springboot.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import lx.myproject.vo.TravelVO;
+import lx.edu.springboot.vo.TravelVO;
 
 @Repository
 public class TravelDAO {
@@ -14,11 +14,7 @@ public class TravelDAO {
 	@Autowired
 	SqlSession session;
 	
-	public TravelVO selectTravelDB(int travelId) throws Exception {
-		return session.selectOne("selectTravelDB", travelId);
-	}
-	
-	public TravelVO getMaxFiveByResultFateId(int resultFateId) throws Exception {
+	public String getMaxFiveByResultFateId(int resultFateId) throws Exception {
 		return session.selectOne("getMaxFiveByResultFateId", resultFateId);
 	}
 	/*
@@ -39,5 +35,8 @@ public class TravelDAO {
 		return session.selectList("getAvoidByBad", bad);
 	}
 	
+	public TravelVO selectTravelDB(int travelId) throws Exception {
+		return session.selectOne("selectTravelDB", travelId);
+	}
 	
 }

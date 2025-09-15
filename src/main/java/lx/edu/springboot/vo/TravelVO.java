@@ -1,4 +1,4 @@
-package lx.myproject.vo;
+package lx.edu.springboot.vo;
 
 public class TravelVO {
 
