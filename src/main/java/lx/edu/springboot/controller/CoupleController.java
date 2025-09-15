@@ -34,6 +34,12 @@ public class CoupleController {
 	@Autowired
 	PartnerDAO pdao;
 	
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> byeongiu
 
 	@GetMapping("/coupleinput")
 	public String showInput(Model model) {
@@ -81,8 +87,6 @@ public class CoupleController {
     
 
 
-
-	
 	@RequestMapping("/conversation_list_couple.do")
 	public String list2(HttpServletRequest req) throws Exception {
 	    List<CoupleResultVO> list = cdao.getCoupleList();

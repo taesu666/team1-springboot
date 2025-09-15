@@ -42,6 +42,7 @@ public class ConversationController {
         List<ConversationVO> list = conversationService.getConversationListByFateId(resultfateId);
         model.addAttribute("result", list);
 
+<<<<<<< HEAD
         // 상세 및 댓글 뷰 페이지 이름 반환
         return "conversation_result_fate"; 
     }
@@ -51,6 +52,9 @@ public class ConversationController {
         // 1. 궁합 상세 데이터 조회 (resultcoupleId 사용)
         CoupleResultVO detail = coupleDao.selectResultCouple(resultcoupleId);
         model.addAttribute("coupleResultVO", detail);
+=======
+
+>>>>>>> byeongiu
 
         // 2. 댓글 리스트 조회 (targetId, type 사용)
         List<ConversationVO> list = conversationService.getConversationListByCoupleId(resultcoupleId);
