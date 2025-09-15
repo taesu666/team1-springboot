@@ -18,11 +18,11 @@
 				<div class="border border-danger navbar-nav ms-auto d-flex flex-row p-2 gap-2">
 					<span th:if="${userNickName != null}"> <span
 						th:text="${userNickName} + '님 반갑습니다.'"></span><br> <a class="border border-success text-decoration-none text-white"
-						href="/logout">로그아웃</a> <a class="border border-success text-decoration-none text-white"
-						href="/updateLogin">회원정보 수정</a>
+						href="/logout.do">로그아웃</a> <a class="border border-success text-decoration-none text-white"
+						href="/updateLogin.do">회원정보 수정</a>
 					</span>
 					 <span th:unless="${userNickName != null}">
-						<a href="/login" class="border border-success text-decoration-none text-white">로그인</a> <a href="/register"
+						<a href="/login.do" class="border border-success text-decoration-none text-white">로그인</a> <a href="/register.do"
 						class="border border-success text-decoration-none text-white">회원가입</a>
 					</span>
 				</div>
