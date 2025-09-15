@@ -16,6 +16,7 @@ public class TravelVO {
 	int travelId;
 	int resultFateId;
 	String maxFive;
+	String userName;
 	String travelName;
 	String travelLocation;
 	String travelDescription;
@@ -39,6 +40,12 @@ public class TravelVO {
 	}
 	public void setMaxFive(String maxFive) {
 		this.maxFive = maxFive;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getTravelName() {
 		return travelName;

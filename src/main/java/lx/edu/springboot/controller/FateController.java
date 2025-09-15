@@ -44,6 +44,9 @@ public class FateController {
 
         FateResultVO resultVO = fateService.fateGenerate(inputVO);      
         model.addAttribute("resultVO", resultVO);
+        
+        req.getSession().setAttribute("maxFive", resultVO.getMaxFive());
+        req.getSession().setAttribute("userName", resultVO.getUserName());
 
  		req.setAttribute("detail", resultVO.getLove());
 		return "fate_result_form";
