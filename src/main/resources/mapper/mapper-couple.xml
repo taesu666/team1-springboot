@@ -26,10 +26,6 @@
 			select RESULTCOUPLE_ID ,USER_NAME, PARTNER_NAME
 			from resultcouple
 	</select>
-
-
-	
-
 		<!-- 파트너 전체 리스트 가져오기 -->
 	<select id="selectAllPartners"
 		resultType="lx.edu.springboot.vo.PartnerVO">
@@ -41,7 +37,6 @@
 		PARTNER_TIME AS partnerTime
 		FROM project1.partnerinfo
 	</select>
-
 	
 	<!-- 사주 목록에서 넘어갈때 -->
 	<select id="selectResultCouple" parameterType="int" resultType="lx.edu.springboot.vo.CoupleResultVO">
@@ -56,8 +51,6 @@
 		where RESULTCOUPLE_ID = #{id}
 	</select>
 	
-
-
 	<!-- <delete id="deleteDB" parameterType="int"> delete from addrbook where 
 		ab_id = #{abId} </delete> -->
 </mapper>
