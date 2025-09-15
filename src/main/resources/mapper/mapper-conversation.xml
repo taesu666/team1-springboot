@@ -11,7 +11,7 @@
 	</insert>
 
 
-<<<<<<< HEAD
+
 	<select id="getConversationListByFateId" parameterType="int" resultType="lx.edu.springboot.vo.ConversationVO">
 	    SELECT c.conversation_id,
 	           c.user_id,
@@ -39,18 +39,15 @@
 	    AND c.type = 2
 	</select>
 	
-	<insert id="insertCoupleConversation"
-=======
 
 
 	<insert id="insertConversation"
->>>>>>> byeongiu
+
 		parameterType="lx.edu.springboot.vo.ConversationVO">
 		INSERT INTO conversation(user_id, content, target_id, type, login_id)
 		VALUES(#{userId}, #{content}, #{targetId}, 2, #{loginId})
 	</insert>
-<<<<<<< HEAD
-=======
+
 	
 	<select id="getDBList"
 		resultType="lx.edu.springboot.vo.ConversationVO">
@@ -62,6 +59,6 @@
     WHERE target_id = #{inputId}
     ORDER BY conversation_id DESC
 </select>
->>>>>>> byeongiu
+
 
 </mapper>

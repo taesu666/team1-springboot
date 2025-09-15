@@ -34,12 +34,7 @@ public class CoupleController {
 	@Autowired
 	PartnerDAO pdao;
 	
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> byeongiu
 
 	@GetMapping("/coupleinput")
 	public String showInput(Model model) {
