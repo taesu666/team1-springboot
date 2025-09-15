@@ -79,7 +79,7 @@ public class ConversationController {
 	        vo.setTargetId(targetId);
 	        conversationService.insertFateConversation(vo);
 
-	        return "redirect:/conversation_result_fate.do?resultfateId=" + targetId;
+	        return "redirect:/fate_result_conversation.do?resultfateId=" + targetId;
 	    }
 	    
 	    @PostMapping("/insert_couple_conversation.do")
@@ -87,7 +87,7 @@ public class ConversationController {
 	        vo.setTargetId(targetId);
 	        conversationService.insertCoupleConversation(vo);
 
-	        return "redirect:/conversation_result_couple.do?resultCoupleId=" + targetId;
+	        return "redirect:/couple_result_conversation.do?resultCoupleId=" + targetId;
 	    }
 
 }

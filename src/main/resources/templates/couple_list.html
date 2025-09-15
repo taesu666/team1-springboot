@@ -5,11 +5,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
-<script type="text/javascript">
-		function check(resultcoupleID) {
-			document.location.href = "addrbook_edit.do?resultcoupleID=" + resultcoupleID;
-		}
-	</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>궁합 결과 리스트</title>
 </head>
@@ -39,15 +35,14 @@
 			</table>
 		</form>
 		<div class="mt-4 d-flex justify-content-between">
-	        <button type="button" class="btn btn-secondary" onclick="location.href='/conversation_select.do'">이전 화면으로</button>
+	        <button type="button" class="btn btn-secondary" onclick="location.href='/result_select.do'">이전 화면으로</button>
 	    </div>
 	</div>
 
-	<script type="text/javascript">
-	function check(resultCoupleId) {
-		document.location.href = "conversation_result_couple.do?resultCoupleId="
-				+ resultCoupleId;
-	}
+<script type="text/javascript">
+		function check(resultcoupleID) {
+			document.location.href = "couple_result_conversation.do?resultCoupleId=" + resultcoupleID;
+		}
 	</script>
 
 </body>

@@ -72,7 +72,7 @@ public class FateController {
 	    List<FateResultVO> list = dao.getFateList();
 	    req.setAttribute("result", list);
 
-	    return "/conversation_list_fate";
+	    return "/fate_list";
 	}
 	
 }

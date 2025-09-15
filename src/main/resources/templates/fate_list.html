@@ -28,8 +28,13 @@
 		</table>
 		
 		<div class="mt-4 d-flex justify-content-between">
-        	<button type="button" class="btn btn-secondary" onclick="location.href='/select.do'">이전 화면으로</button>
+        	<button type="button" class="btn btn-secondary" onclick="location.href='/result_select.do'">이전 화면으로</button>
 	    </div>
 	</div>
+	<script type="text/javascript">
+		function check(resultfateID) {
+			document.location.href = "fate_result_conversation.do?resultfateId=" + resultfateID;
+		}
+	</script>
 </body>
 </html>

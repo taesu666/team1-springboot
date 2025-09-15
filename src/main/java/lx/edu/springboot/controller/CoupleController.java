@@ -74,7 +74,7 @@ public class CoupleController {
 	    List<CoupleResultVO> list = cdao.getCoupleList();
 	    req.setAttribute("result", list);
 
-	    return "/conversation_list_couple";
+	    return "/couple_list";
 	}
 
 
