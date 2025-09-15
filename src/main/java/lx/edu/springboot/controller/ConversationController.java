@@ -16,11 +16,6 @@ import lx.edu.springboot.vo.FateResultVO;
 
 @Controller
 public class ConversationController {
-<<<<<<< HEAD
-	
-	@Autowired
-	ConversationDAO dao;
-=======
 
     @Autowired
     private ConversationService conversationService;
@@ -30,29 +25,18 @@ public class ConversationController {
     @Autowired
     private CoupleDAO coupleDao;
     
->>>>>>> eunho
-
 
 	@GetMapping("/conversation_select")
 	public String form2() {
 		return "conversation_select";
 	}
 	
-<<<<<<< HEAD
-//	@RequestMapping("/insert.do")
-//	public String insert(ConversationVO vo) throws Exception {
-//		System.out.println(vo);
-//		dao.insertDB(vo);
-//		return "redirect:addrbook_list.do";
-//	}
-=======
 	
     @GetMapping("/conversation_result_fate.do")
     public String resultFate(@RequestParam(value="resultfateId", required=false, defaultValue="0") int resultfateId, Model model) {
         // 1. 사주 상세 데이터 조회 (resultfateId 사용)
         FateResultVO detail = fateDao.selectResultFate(resultfateId);
         model.addAttribute("resultVO", detail);
->>>>>>> eunho
 
         // 2. 댓글 리스트 조회 (targetId, type 사용)
         List<ConversationVO> list = conversationService.getConversationListByFateId(resultfateId);
@@ -68,10 +52,6 @@ public class ConversationController {
         CoupleResultVO detail = coupleDao.selectResultCouple(resultcoupleId);
         model.addAttribute("coupleResultVO", detail);
 
-<<<<<<< HEAD
-
-}
-=======
         // 2. 댓글 리스트 조회 (targetId, type 사용)
         List<ConversationVO> list = conversationService.getConversationListByCoupleId(resultcoupleId);
         model.addAttribute("result", list);
@@ -97,4 +77,3 @@ public class ConversationController {
         return "redirect:/conversation_result_couple.do?resultCoupleId=" + targetId;
     }
 }
->>>>>>> eunho
