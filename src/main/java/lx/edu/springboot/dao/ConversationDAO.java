@@ -14,20 +14,6 @@ public class ConversationDAO {
 	@Autowired
 	SqlSession session;
 
-<<<<<<< HEAD
-	public int insertConversation(ConversationVO ab) throws Exception {
-		return session.insert("insertConversation", ab);
-	}
-	
-
-	public List<ConversationVO> getDBList(int targetId, int type) throws Exception {
-		return session.selectList("getDBList");
-	}
-
-
-	public List<ConversationVO> getConversationList(int targetId) {
-		return session.selectList("getConversationList", targetId);
-=======
 	public int insertFateConversation(ConversationVO vo) throws Exception {
 		return session.insert("insertFateConversation", vo);
 	}
@@ -45,7 +31,6 @@ public class ConversationDAO {
 
 	public int insertCoupleConversation(ConversationVO vo) throws Exception {
 		return session.insert("insertCoupleConversation", vo);
->>>>>>> eunho
 	}
 
 
