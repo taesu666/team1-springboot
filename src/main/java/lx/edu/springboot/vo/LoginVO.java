@@ -1,5 +1,5 @@
 
-// 변수명, 클래스명 수정
+// 보물찾기
 
 package lx.edu.springboot.vo;
 

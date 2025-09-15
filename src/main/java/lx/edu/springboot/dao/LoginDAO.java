@@ -1,4 +1,4 @@
-// 첫 생성
+// 보물찾기
 package lx.edu.springboot.dao;
 
 import org.apache.ibatis.session.SqlSession;
