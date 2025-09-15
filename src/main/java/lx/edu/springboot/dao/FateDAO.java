@@ -35,4 +35,12 @@ public class FateDAO {
 		return session.selectList("getFateList");
 
 	}
+<<<<<<< HEAD
 }
+=======
+
+	public int deleteFate(int resultFateId) {
+		return session.delete("deleteFate", resultFateId);
+	}
+}
+>>>>>>> eunho

@@ -44,12 +44,15 @@
 >>>>>>> byeongiu:src/main/resources/templates/list_couple.html
 					<td th:text="${vo.userName}"></td>
 					<td th:text="${vo.partnerName}"></td>
+					<td>
+					<button type="button" class="btn btn-secondary" th:onclick="|location.href='/couple_delete.do?resultCoupleId=${vo.resultCoupleId}'|">삭제</button>
+					</td>
 				</tr>
 
 			</table>
 		</form>
 		<div class="mt-4 d-flex justify-content-between">
-	        <button type="button" class="btn btn-secondary" onclick="location.href='/conversation_select.do'">이전 화면으로</button>
+	        <button type="button" class="btn btn-secondary" onclick="location.href='/select.do'">이전 화면으로</button>
 	    </div>
 	</div>
 

@@ -79,7 +79,20 @@ public class FateController {
 	    return "select";
 	}
 
+<<<<<<< HEAD
 	
+=======
+	// 사주 삭제
+	@RequestMapping("/fate_delete.do")
+	public String delete(@RequestParam("resultFateId") int resultFateId, HttpServletRequest req) throws Exception {
+	    dao.deleteFate(resultFateId);
+
+	    List<FateResultVO> list = dao.getFateList();
+	    req.setAttribute("result", list);
+
+	    return "/conversation_list_fate";
+	}
+>>>>>>> eunho
 
 	
 }
