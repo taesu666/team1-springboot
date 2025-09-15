@@ -28,13 +28,13 @@ public class TravelController {
 		ModelAndView result = new ModelAndView(); 
 		
 		//TravelVO mf = dao.getMaxFiveByResultFateId(resultFateID);
-		//(유저네임 추가시)TravelVO un = dao.getUserNameByResultFateId(resultFateID);
+		
 		String userName = (String) req.getSession().getAttribute("userName");
 		String maxFive = (String) req.getSession().getAttribute("maxFive");
 		List<TravelVO> recoList = dao.getRecommendedByMaxFive(maxFive);
 		String bad = dao.getBadByMaxFive(maxFive);
 		List<TravelVO> avList = dao.getAvoidByBad(bad);
-		
+		System.out.println(maxFive);
 		result.addObject("userName", userName);
 		result.addObject("maxFive", maxFive);
 		result.addObject("recommended", recoList);
@@ -56,11 +56,6 @@ public class TravelController {
 		result.addObject("mapsApiKey", mapsApiKey);
 		result.setViewName("travel_map");
 		return result;
-	}
-	
-	@RequestMapping("/conversation_select.do")
-	public String conversation() {
-		return "conversation_select";
 	}
 	
 }
