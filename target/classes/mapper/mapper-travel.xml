@@ -3,25 +3,29 @@
 <mapper namespace="mapper-travel">
 	<select id="selectTravelDB" parameterType="int"
 		resultType="lx.edu.springboot.vo.TravelVO">
-		select travel_id
-		,maxFive
-		,travel_name
-		,travel_location
-		,travel_description
-		,travel_image
-		,bad
-		from travel
-		where travel_id = #{travelId}
+		select 
+        TRAVELID as travelId,
+        MAXFIVE as maxFive,
+        TRAVEL_NAME as travelName,
+        TRAVEL_LOCATION as travelLocation,
+        TRAVEL_DESCRIPTION as travelDescription,
+        TRAVEL_IMAGE as travelImage,
+        BAD as bad
+    from travel
+    where TRAVELID = #{travelId}
 	</select>
 	<select id="getMaxFiveByResultFateId" parameterType="int"
 		resultType="string">
-		SELECT maxFive
-		FROM travel
-		WHERE resultfate_id = 1 
+		SELECT t.maxFive
+		FROM travel t
+		JOIN resultFate r ON t.resultFate_Id = r.resultFate_Id
+		WHERE t.resultFateId = #{resultFateId}
+		LIMIT 1
 	</select>
 	<select id="getRecommendedByMaxFive" parameterType="string"
 		resultType="lx.edu.springboot.vo.TravelVO">
 		SELECT 
+			travelId,
 			travel_name,
 			travel_location,
 			travel_description,
@@ -41,6 +45,7 @@
 	<select id="getAvoidByBad" parameterType="string"
 		resultType="lx.edu.springboot.vo.TravelVO">
 		SELECT 
+			travelId,
 			travel_name,
 			travel_location,
 			travel_description,
