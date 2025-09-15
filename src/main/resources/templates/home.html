@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 	<link rel="stylesheet" href="/css/home.css" type="text/css" media="screen" />
@@ -13,41 +12,35 @@
 <!-- 공통 스타일 -->
 <!-- <th:block th:replace="~{fragments/styles :: commonStyles}"></th:block>-->
 </head>
-=======
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-		<title>사주세요:홈</title>
-
-	</head>
->>>>>>> byeongiu
 
 <body>
 	<!-- 헤더 -->
 	<div th:replace="fragments/header :: headerFragment"></div>
 
-	<div class="col-12 d-flex flex-column align-items-center"> 
+	<div class="col-12 d-flex flex-column align-items-center">
 		<!-- 로고 -->
 		<H2>사주세요:홈</H2>
 
-		<div class="col-8 d-flex flex-column border border-primary align-items-center padding-3">
+		<div
+			class="col-8 d-flex flex-column border border-primary align-items-center padding-3">
 			<img th:src="@{/image/logo.png}" width="40%">
 		</div>
 
 		<!-- 메뉴 버튼 -->
-		<div class="col-8 d-flex flex-row border border-danger justify-content-evenly">
-			<a href="/fate" class="btn btn-light">사주 보기</a>
-			<a href="/couple" class="btn btn-light">궁합 보기</a>
-			<a href="/result" class="btn btn-light">결과 보기</a>	
+		<div
+			class="col-8 d-flex flex-row border border-danger justify-content-evenly">
+			<a href="/fate" class="btn btn-light">사주 보기</a> <a href="/couple"
+				class="btn btn-light">궁합 보기</a> <a href="/result"
+				class="btn btn-light">결과 보기</a>
 		</div>
+		<div>
+			<span th:if="${userNickName != null}"
+				th:text="${userNickName} + '님 반갑습니다.'"></span> <span
+				th:unless="${userNickName != null}">로그인 해주세요.</span>
+		</div>
+		<div class="d-flex flex-row"></div>
 
-		<div class="d-flex flex-row">	
-		</div>
-
-		<div class="d-flex flex-row">
-		</div>
+		<div class="d-flex flex-row"></div>
 	</div>
 
 </body>

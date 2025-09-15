@@ -1,3 +1,4 @@
+
 package lx.edu.springboot.dao;
 
 import java.util.HashMap;
@@ -35,4 +36,5 @@ public class FateDAO {
 		return session.selectList("getFateList");
 
 	}
+
 }

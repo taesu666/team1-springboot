@@ -1,8 +1,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<<<<<<< HEAD
 
 <link rel="stylesheet" href="/css/select.css" type="text/css"
 	media="screen" />
+=======
+
+<link rel="stylesheet" href="/css/select.css" type="text/css" media="screen" />
+
+<link rel="stylesheet" href="/css/select.css" type="text/css"
+	media="screen" />
+
+
+
+
+<link rel="stylesheet" href="/css/select.css" type="text/css"
+	media="screen" />
+
+
+>>>>>>> eunho
 
 <link rel="stylesheet" href="/css/select.css" type="text/css"
 	media="screen" />
@@ -14,6 +30,9 @@
 <title>선택 화면</title>
 </head>
 
+
+
+
 <body>
 	<!-- 헤더 -->
 	<div th:replace="fragments/header :: headerFragment"></div>
@@ -21,11 +40,16 @@
 	<div align="center">
 		<table>
 			<tr>
+<<<<<<< HEAD
 				<td colspan="2" align="center">  
 					<form action="/list_fate.do" method="get">
+=======
+				<td colspan="2" align="center">
+					<form action="/conversation_list_fate.do" method="get">
+>>>>>>> eunho
 						<input type="submit" value="사주결과 확인하기">
 					</form>
-					<form action="/list_couple.do" method="get">
+					<form action="/conversation_list_couple.do" method="get">
 						<input type="submit" value="궁합결과 확인하기">
 					</form>
 				</td>

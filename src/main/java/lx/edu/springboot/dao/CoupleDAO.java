@@ -42,6 +42,10 @@ public class CoupleDAO {
 		return session.selectOne("selectResultCouple", inputId);
 	}
 
+	public int deleteCouple(int resultCoupleId) {
+		return session.delete("deleteCouple", resultCoupleId);
+	}
+
 
 
 

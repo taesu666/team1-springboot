@@ -3,69 +3,90 @@
 <head>
 <meta charset="UTF-8" />
 <title>궁합 상세 및 댓글</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<div class="container mt-5">
-    <h2>궁합 결과</h2>
-    <div class="result-box border p-3 rounded mb-4">
-        <div class="d-flex justify-content-between mb-2">
-            <p><strong>당신 이름:</strong> <span th:text="${coupleResultVO.userName}">홍길동</span></p>
-            <p><strong>상대 이름:</strong> <span th:text="${coupleResultVO.partnerName}">김철수</span></p>
-        </div>
-        <div class="mb-3">
-            <p><strong>궁합 점수:</strong> <span th:text="${coupleResultVO.score}">85</span> 점</p>
-        </div>
-        <p><strong>분석 결과:</strong></p>
-        <p th:text="${coupleResultVO.total}" style="white-space: pre-wrap;"></p>
+	<div class="container mt-5">
+		<h2>궁합 결과</h2>
+		<div class="result-box border p-3 rounded mb-4">
+			<div class="d-flex justify-content-between mb-2">
+				<p>
+					<strong>당신 이름:</strong> <span th:text="${coupleResultVO.userName}">홍길동</span>
+				</p>
+				<p>
+					<strong>상대 이름:</strong> <span
+						th:text="${coupleResultVO.partnerName}">김철수</span>
+				</p>
+			</div>
+			<div class="mb-3">
+				<p>
+					<strong>궁합 점수:</strong> <span th:text="${coupleResultVO.score}">85</span>
+					점
+				</p>
+			</div>
+			<p>
+				<strong>분석 결과:</strong>
+			</p>
+			<p th:text="${coupleResultVO.total}" style="white-space: pre-wrap;"></p>
 
-        <select name="coupleDetail" class="form-select mt-3" onchange="handleOnChange(this)">
-            <option value="love">애정운</option>
-            <option value="partner">동업운</option>
-        </select>
-        <p id="detailResult" style="white-space: pre-wrap; margin-top: 1em;"></p>
-    </div>
+			<select name="coupleDetail" class="form-select mt-3"
+				onchange="handleOnChange(this)">
+				<option value="love">애정운</option>
+				<option value="partner">동업운</option>
+			</select>
+			<p id="detailResult" style="white-space: pre-wrap; margin-top: 1em;"></p>
+		</div>
 
-    <h3>댓글 목록</h3>
-    <div th:each="c : ${result}">
-        <b th:text="${c.userId}">사용자</b> : <span th:text="${c.content}"></span><hr>
-    </div>
+		<h3>댓글 목록</h3>
+		<div th:each="c : ${result}">
+			<b th:text="${c.userNickName}">사용자</b> : <span th:text="${c.content}"></span>
+			<hr>
+		</div>
 
-    <form id="conversation_form" th:action="@{/insert_couple_conversation.do}" method="post" class="mt-4">
-        <input type="hidden" name="targetId" th:value="${coupleResultVO.resultCoupleId}" />
-        <div class="mb-3">
-            <label for="userId" class="form-label">이름</label>
-            <input type="text" name="userId" id="userId" class="form-control" required />
-        </div>
-        <div class="mb-3">
-            <label for="content" class="form-label">내용</label>
-            <textarea name="content" id="content" rows="3" class="form-control" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">댓글 등록</button>
-    </form>
+		<form id="conversation_form"
+			th:action="@{/insert_couple_conversation.do}" method="post"
+			class="mt-4">
+			<input type="hidden" name="targetId"
+				th:value="${coupleResultVO.resultCoupleId}" />
+			<!-- 세션에서 받아온 닉네임을 hidden 필드로 전달 -->
+			<input type="hidden" name="userNickName" th:value="${userNickName}" />
+			<div class="mb-3">
+				<label for="content" class="form-label">내용</label>
+				<textarea name="content" id="content" rows="3" class="form-control"
+					required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">댓글 등록</button>
+		</form>
 
-    <div class="mt-4 d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary" onclick="location.href='/coupleinput'">다시 입력하기</button>
-        <button type="button" class="btn btn-secondary" onclick="location.href='/conversation_list_couple.do'">목록으로 가기</button>
-    </div>
-</div>
+		<div class="mt-4 d-flex justify-content-between">
+			<button type="button" class="btn btn-secondary"
+				onclick="location.href='/coupleinput'">다시 입력하기</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="location.href='/conversation_list_couple.do'">목록으로
+				가기</button>
+		</div>
+	</div>
 
-<script th:inline="javascript">
-function handleOnChange(e) {
-    const value = e.value;
-    let text = "";
-    if (value === "love") {
-        text = /*[[${coupleResultVO.love}]]*/ "";
-    } else if (value === "partner") {
-        text = /*[[${coupleResultVO.partner}]]*/ "";
-    }
-    document.getElementById('detailResult').innerText = text;
-}
-window.onload = function() {
-    const select = document.querySelector("select[name='coupleDetail']");
-    handleOnChange(select);
-}
-</script>
+	<script th:inline="javascript">
+		function handleOnChange(e) {
+			const value = e.value;
+			let text = "";
+			if (value === "love") {
+				text = /*[[${coupleResultVO.love}]]*/"";
+			} else if (value === "partner") {
+				text = /*[[${coupleResultVO.partner}]]*/"";
+			}
+			document.getElementById('detailResult').innerText = text;
+		}
+		window.onload = function() {
+			const select = document
+					.querySelector("select[name='coupleDetail']");
+			handleOnChange(select);
+		}
+	</script>
 </body>
 </html>
