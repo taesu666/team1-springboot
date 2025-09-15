@@ -35,16 +35,10 @@ public class FateDAO {
 		return session.selectList("getFateList");
 
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
 
 	public int deleteFate(int resultFateId) {
 		return session.delete("deleteFate", resultFateId);
 	}
 }
->>>>>>> eunho
-=======
-}
->>>>>>> minho
+
+

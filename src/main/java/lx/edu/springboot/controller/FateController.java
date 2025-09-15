@@ -79,9 +79,6 @@ public class FateController {
 	    return "select";
 	}
 
-<<<<<<< HEAD
-	
-=======
 	// 사주 삭제
 	@RequestMapping("/fate_delete.do")
 	public String delete(@RequestParam("resultFateId") int resultFateId, HttpServletRequest req) throws Exception {
@@ -92,7 +89,7 @@ public class FateController {
 
 	    return "/conversation_list_fate";
 	}
->>>>>>> eunho
+
 
 	
 }

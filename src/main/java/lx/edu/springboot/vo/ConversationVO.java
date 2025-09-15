@@ -55,9 +55,4 @@ public class ConversationVO {
         this.loginId = loginId;
     }
 
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> eunho
 }

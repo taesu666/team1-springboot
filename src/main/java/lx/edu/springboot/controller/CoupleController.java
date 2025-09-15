@@ -18,13 +18,7 @@ import lx.edu.springboot.dao.PartnerDAO;
 import lx.edu.springboot.service.CoupleService;
 import lx.edu.springboot.vo.CoupleInputVO;
 import lx.edu.springboot.vo.CoupleResultVO;
-<<<<<<< HEAD
-
 import lx.edu.springboot.vo.FateResultVO;
-
-=======
-import lx.edu.springboot.vo.FateResultVO;
->>>>>>> eunho
 import lx.edu.springboot.vo.PartnerVO;
 
 
@@ -38,17 +32,7 @@ public class CoupleController {
 	
 	@Autowired
 	PartnerDAO pdao;
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> minho
-
-
-
->>>>>>> byeongiu
 
 	@GetMapping("/coupleinput")
 	public String showInput(Model model) {
@@ -117,9 +101,4 @@ public class CoupleController {
     	    
 
 
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> eunho
