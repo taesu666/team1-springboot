@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>사주 결과 리스트</title>
+<link rel="stylesheet" href="css/conversation.css" type="text/css"
+	media="screen" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+	function check(resultfateId) {
+		document.location.href = "conversation_result_fate.do?resultfateId="
+				+ resultfateId;
+	}
+</script>
+</head>
+<body>
+	<div align="center">
+		<h2>사주 결과 리스트</h2>
+		<hr>
+		<table border="1">
+			<tr>
+				<th>번호</th>
+				<th>이 름</th>
+			</tr>
+			<tr th:each="vo : ${result}">
+				<td><a th:href="|javascript:check(${vo.resultFateId})|"
+					th:text="${vo.resultFateId}"></a></td>
+
+				<td th:text="${vo.userName}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
