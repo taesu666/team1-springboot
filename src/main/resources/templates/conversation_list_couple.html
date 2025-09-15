@@ -38,11 +38,10 @@
 	</div>
 
 	<script type="text/javascript">
-		$('tr').on('click', function() {
-			//ab_id
-			let abId = ($(this).find('a').text());
-			document.location.href = "edit.do?abId=" + abId;
-		});
+	function check(resultCoupleId) {
+		document.location.href = "conversation_result_couple.do?resultCoupleId="
+				+ resultCoupleId;
+	}
 	</script>
 
 </body>
