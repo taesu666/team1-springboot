@@ -1,6 +1,4 @@
-
-// 첫 생성
-// 로그인, 회원가입 추가
+// 보물찾기
 
 package lx.edu.springboot.controller;
 
