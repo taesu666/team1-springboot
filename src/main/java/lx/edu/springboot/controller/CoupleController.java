@@ -59,11 +59,11 @@ public class CoupleController {
 		return "couple_result";
 	}
 	
-	@RequestMapping("/conversation_list_couple.do")
+	@RequestMapping("/couple_list.do")
 	public String list(HttpServletRequest req) throws Exception {
 	    List<CoupleResultVO> list = cdao.getCoupleList();
 	    req.setAttribute("result", list);
-	    return "/conversation_list_couple";  
+	    return "/couple_list";  
 	}
     	    
 

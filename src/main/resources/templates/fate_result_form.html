@@ -1,57 +1,336 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>사주 - result</title>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>사주 - result</title>
+
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+:root {
+	--accent: #2f6f6d; /* 틸 포인트 컬러 */
+	--accent-2: #9ccdc6; /* 밝은 틸 */
+	--ink: #1f2937; /* 본문 글자색 */
+	--muted: #6b7280;
+	--line: rgba(15, 23, 42, .08);
+	--radius: 16px;
+}
+
+body {
+	background: #f9fafb;
+}
+
+.fate-page {
+	max-width: 960px;
+	margin: 30px auto;
+	padding: 0 20px;
+}
+
+.title {
+	font-size: 1.6rem;
+	font-weight: 800;
+	margin: 12px 0 22px;
+	color: var(--ink);
+	text-align: center;
+}
+
+/* 카드 */
+.card {
+	background: #fff;
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
+	padding: 22px;
+	margin-bottom: 20px;
+}
+
+/* 요약 카드 */
+.summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: #f3faf8;
+	border: 1px solid #daeee9;
+	color: #0f3d3a;
+	font-weight: 700;
+}
+
+.kv {
+	color: var(--muted);
+	font-size: 1.1rem;
+}
+
+.kv b {
+	color: var(--ink)
+}
+
+/* 오행 분포 */
+.bars {
+	margin-top: 10px;
+}
+
+.bars .row {
+	display: grid;
+	grid-template-columns: 140px 1fr 64px;
+	align-items: center;
+	gap: 12px;
+	margin: 12px 0;
+}
+
+.label {
+	font-weight: 700;
+	color: #374151;
+}
+
+.value {
+	font-weight: 800;
+	color: #111827;
+	text-align: right;
+}
+
+.meter {
+	position: relative;
+	height: 12px;
+	border-radius: 999px;
+	overflow: hidden;
+	background: #eef2f1;
+	border: 1px solid #e5e7eb;
+}
+
+.fill {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: clamp(0%, calc(( var(--val, 0)/var(--max, 100))* 100%), 100%);
+	background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* 운세 결과 */
+.fortune {
+	display: grid;
+	grid-template-columns: 260px 1fr;
+	gap: 18px;
+}
+
+@media ( max-width :720px) {
+	.fortune {
+		grid-template-columns: 1fr
+	}
+}
+
+.select-box select {
+	width: 100%;
+	height: 44px;
+	padding: 10px 12px;
+	border-radius: 12px;
+	border: 1px solid #d1d5db;
+	background: #fff;
+	outline: none;
+	transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+.select-box select:focus {
+	border-color: #b9ded8;
+	box-shadow: 0 0 0 .2rem rgba(47, 111, 109, .15)
+}
+
+.detail {
+	min-height: 96px;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	padding: 14px 16px;
+	font-size: 1.05rem;
+	background: #ffffff;
+}
+
+.detail .hint {
+	color: var(--muted);
+	margin-bottom: 6px;
+	font-size: .95rem
+}
+
+.detail .text {
+	white-space: pre-wrap;
+	line-height: 1.6
+}
+
+/* 버튼 */
+.actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+	gap: 15px;
+}
+
+.btn-custom {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 42px;
+	padding: 0 18px;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	font-weight: 700;
+	transition: transform .06s ease, filter .1s ease, box-shadow .15s ease;
+	background: var(--accent);
+	color: #fff;
+	box-shadow: 0 6px 16px rgba(47, 111, 109, .18);
+}
+
+.btn-custom:hover {
+	filter: brightness(1.05)
+}
+
+.btn-custom:active {
+	transform: translateY(1px)
+}
+</style>
 </head>
 <body>
-	<div align="center">
-		<h2>사주 result</h2>
-		<p>username: <span th:text="${resultVO.userName}"></span></p>
-		<p>tree: <span th:text="${resultVO.tree}"></span></p>
-		<p>fire: <span th:text="${resultVO.fire}"></span></p>
-		<p>soil: <span th:text="${resultVO.soil}"></span></p>
-		<p>steel: <span th:text="${resultVO.steel}"></span></p>
-		<p>water: <span th:text="${resultVO.water}"></span></p>
-		<p>total: <span th:text="${resultVO.total}"></span></p>
-		
-		    <select name="fateOption" id="fateOption" onchange="handleOnChange(this)">
-		        <option value="love">연애운</option>
-		        <option value="health">건강운</option>
-		        <option value="money">재물운</option>
-		        <option value="job">직업운</option>			
-		    </select>
-		
-		<p>운세 결과:</p> <span id ="detail" th:text="${resultVO.love}"></span>
+	<!-- 헤더 -->
+	<div th:replace="fragments/header :: headerFragment"></div>
 
-		<a href="home.do">홈으로</a>
+	<div class="fate-page">
+		<div class="title">사주 결과</div>
+
+		<!-- 요약 -->
+		<div class="card summary">
+			<div class="pill">
+				👤 <span th:text="${resultVO.userName}">이름</span>
+			</div>
+			<div class="kv">
+				총평: <b th:text="${resultVO.total}">0</b>
+			</div>
+		</div>
+
+		<div class="card bars">
+			<div class="row" id="row-tree">
+				<div class="label">🌳 목(木)</div>
+				<div class="meter">
+					<div class="fill"></div>
+				</div>
+				<div class="value" th:text="${resultVO.tree}">0</div>
+			</div>
+			<div class="row" id="row-fire">
+				<div class="label">🔥 화(火)</div>
+				<div class="meter">
+					<div class="fill"></div>
+				</div>
+				<div class="value" th:text="${resultVO.fire}">0</div>
+			</div>
+			<div class="row" id="row-soil">
+				<div class="label">⛰️ 토(土)</div>
+				<div class="meter">
+					<div class="fill"></div>
+				</div>
+				<div class="value" th:text="${resultVO.soil}">0</div>
+			</div>
+			<div class="row" id="row-steel">
+				<div class="label">⚙️ 금(金)</div>
+				<div class="meter">
+					<div class="fill"></div>
+				</div>
+				<div class="value" th:text="${resultVO.steel}">0</div>
+			</div>
+			<div class="row" id="row-water">
+				<div class="label">💧 수(水)</div>
+				<div class="meter">
+					<div class="fill"></div>
+				</div>
+				<div class="value" th:text="${resultVO.water}">0</div>
+			</div>
+		</div>
+
+		<!-- 운세 상세 -->
+		<div class="card fortune">
+			<div class="select-box">
+				<label for="fateOption"
+					style="display: block; margin-bottom: 8px; font-weight: 700; color: #374151;">운세
+					항목</label> <select name="fateOption" id="fateOption"
+					onchange="handleOnChange(this)">
+					<option value="love">연애운</option>
+					<option value="health">건강운</option>
+					<option value="money">재물운</option>
+					<option value="job">직업운</option>
+				</select>
+			</div>
+			<div class="detail">
+				<div class="hint">운세 결과</div>
+				<div id="detail" class="text" th:text="${resultVO.love}">내용</div>
+			</div>
+		</div>
+
+		<!-- 버튼 -->
+		<div class="actions">
+			<button class="btn-custom" onclick="location.href='home.do'">홈으로</button>
+			<button class="btn-custom" onclick="location.href='travel.do'">여행지
+				추천</button>
+		</div>
 	</div>
+
 	<script th:inline="javascript">
-	function handleOnChange(e) {
-	    const value = e.value;
-	    let text = "";
-	
-	    if (value === "love") {
-	        text = /*[[${resultVO.love}]]*/"";
-	    } else if (value === "health") {
-	        text = /*[[${resultVO.health}]]*/"";
-	    } else if (value === "money") {
-	        text = /*[[${resultVO.money}]]*/"";
-	    } else if (value === "job") {
-	        text = /*[[${resultVO.job}]]*/"";
-	    }
-	
-	    document.getElementById('detail').innerText = text;
-	}
-	
-	window.onload = function() {
-	    const select = document.querySelector("select[name='fateOption']");
-	    handleOnChange(select);
-	}
+		function handleOnChange(e) {
+			const value = e.value;
+			let text = "";
+			if (value === "love") {
+				text = /*[[${resultVO.love}]]*/"";
+			} else if (value === "health") {
+				text = /*[[${resultVO.health}]]*/"";
+			} else if (value === "money") {
+				text = /*[[${resultVO.money}]]*/"";
+			} else if (value === "job") {
+				text = /*[[${resultVO.job}]]*/"";
+			}
+			document.getElementById('detail').innerText = text;
+		}
+		window.onload = function() {
+			const select = document.querySelector("select[name='fateOption']");
+			handleOnChange(select);
+		}
 	</script>
+	<script th:inline="javascript">
+  // 팁: 각 오행 값을 JS로 가져와 최대값 기준 퍼센트 계산 후 너비 적용
+  window.onload = function() {
+    // 오행값들
+    const tree = /*[[${resultVO.tree}]]*/0;
+    const fire = /*[[${resultVO.fire}]]*/0;
+    const soil = /*[[${resultVO.soil}]]*/0;
+    const steel = /*[[${resultVO.steel}]]*/0;
+    const water = /*[[${resultVO.water}]]*/0;
 
+    const max = Math.max(tree, fire, soil, steel, water, 1); // 0 예방용 1 최소값
 
-
+    // 각 row별 .fill 요소 너비 설정 (퍼센트로 사용)
+    document.querySelector("#row-tree .fill").style.width = (tree / max * 100) + "%";
+    document.querySelector("#row-fire .fill").style.width = (fire / max * 100) + "%";
+    document.querySelector("#row-soil .fill").style.width = (soil / max * 100) + "%";
+    document.querySelector("#row-steel .fill").style.width = (steel / max * 100) + "%";
+    document.querySelector("#row-water .fill").style.width = (water / max * 100) + "%";
+    
+    // 기존 운세 상세 텍스트 변경 함수 호출 (선택 옵션 초기화)
+    const select = document.querySelector("select[name='fateOption']");
+    if(select) {
+      handleOnChange(select);
+    }
+  };
+</script>
+	
 </body>
-
 </html>
