@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -43,6 +44,7 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
+      width: 100%;
       padding: 24px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       margin-bottom: 20px;
@@ -50,6 +52,7 @@
 
     .summary-box {
       display: flex;
+      width: 100%;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
@@ -113,6 +116,25 @@
     .btn-custom:hover {
       background: #a61e4d;
     }
+
+    .kv {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .kvB {
+      font-size: 1.1rem;
+      color: var(--bs-dark)
+    }
+
+    .detail {
+      min-height: 96px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 1.05rem;
+      background: #ffffff;
+    }
   </style>
 </head>
 <body>
@@ -121,44 +143,49 @@
   <div th:replace="fragments/header :: headerFragment"></div>
 
   <div class="love-page">
-    <div class="title">궁합 결과</div>
+  <div class="d-flex flex-column align-items-center">    
+    <!-- 제목--> 
+    <div class="title-box">궁합 결과</div>
 
-    <!-- 기본 정보 카드 -->
-    <div class="card">
-      <div class="summary-box">
-        <p><strong>당신 이름:</strong> <span th:text="${result.userName}">이름</span></p>
-        <p><strong>상대 이름:</strong> <span th:text="${result.partnerName}">상대</span></p>
-      </div>
-      <div class="score">
-        궁합 점수: <span th:text="${result.score}">75</span>점
-      </div>
-    </div>
-
-    <!-- 분석 결과 카드 -->
-    <div class="card">
-      <p class="fw-bold mb-2">분석 결과</p>
-      <div th:text="${result.total}">총평 내용입니다.</div>
-    </div>
-
-    <!-- 상세 선택 카드 -->
-    <div class="card">
-      <div class="select-box mb-3">
-        <label for="coupleDetail">세부 항목 선택</label>
-        <select name="coupleDetail" id="coupleDetail" onchange="handleOnChange(this)">
-          <option value="love">애정운</option>
-          <option value="partner">동업운</option>
-        </select>
+      <!-- 기본 정보 카드 -->
+      <div class="card">
+        <div class="summary-box">
+          <p><strong>당신 이름:</strong> <span th:text="${result.userName}">이름</span></p>
+          <p><strong>상대 이름:</strong> <span th:text="${result.partnerName}">상대</span></p>
+        </div>
+        <div class="score">
+          궁합 점수: <span th:text="${result.score}">75</span>점
+        </div>
       </div>
 
-      <div id="result" class="detail-box">세부 결과 내용</div>
-    </div>
+      <!-- 분석 결과 카드 -->
+      <div class="card">
+        <div class="select-box mb-3">
+          <label for="coupleDetail">분석 결과</label>
+        </div>
+        <b id="detail" class="kvB" th:text="${result.total}">총평 내용입니다.</b>
+      </div>
 
-    <!-- 버튼 영역 -->
-    <div class="actions">
-      <button class="btn-custom" onclick="location.href='/coupleinput'">다시 입력하기</button>
-      <button class="btn btn-outline-secondary" onclick="location.href='/couple_list.do'">목록으로 가기</button>
+      <!-- 상세 선택 카드 -->
+      <div class="card">
+        <div class="select-box mb-3">
+          <label for="coupleDetail">세부 항목 선택</label>
+          <select name="coupleDetail" id="coupleDetail" onchange="handleOnChange(this)">
+            <option value="love">애정운</option>
+            <option value="partner">동업운</option>
+          </select>
+        </div>
+
+        <div id="result" class="detail-box kvB">세부 결과 내용</div>
+      </div>
+
+      <!-- 버튼 영역 -->
+      <div class="actions">
+        <button class="button" onclick="location.href='/coupleinput'">다시 입력하기</button>
+        <button class="button" onclick="location.href='/couple_list.do'">목록으로 가기</button>
+      </div>
     </div>
-  </div>
+</div>
 
   <!-- 동적 처리 스크립트 -->
   <script th:inline="javascript">

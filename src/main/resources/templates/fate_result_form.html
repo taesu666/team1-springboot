@@ -29,7 +29,10 @@ body {
 .fate-page {
 	max-width: 960px;
 	margin: 30px auto;
+	margin-top: 0;
 	padding: 0 20px;
+	justify-items: center;
+	justify-content: center;
 }
 
 .title {
@@ -48,6 +51,7 @@ body {
 	box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
 	padding: 22px;
 	margin-bottom: 20px;
+	width: 100%;
 }
 
 /* 요약 카드 */
@@ -77,6 +81,9 @@ body {
 
 .kv b {
 	color: var(--ink)
+}
+.kvB {
+	color: var(--bs-dark)
 }
 
 /* 오행 분포 */
@@ -182,10 +189,9 @@ body {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	height: 42px;
 	padding: 0 18px;
 	border-radius: 12px;
-	border: 1px solid transparent;
+	border: 2px solid black;
 	cursor: pointer;
 	font-weight: 700;
 	transition: transform .06s ease, filter .1s ease, box-shadow .15s ease;
@@ -208,7 +214,7 @@ body {
 	<div th:replace="fragments/header :: headerFragment"></div>
 
 	<div class="fate-page">
-		<div class="title">사주 결과</div>
+		<div class="title-box">사주 결과</div>
 
 		<!-- 요약 -->
 		<div class="card summary">
@@ -273,13 +279,13 @@ body {
 			</div>
 			<div class="detail">
 				<div class="hint">운세 결과</div>
-				<div id="detail" class="text" th:text="${resultVO.love}">내용</div>
+				<b id="detail" class="kvB" th:text="${resultVO.love}">내용</b>
 			</div>
 		</div>
 
 		<!-- 버튼 -->
 		<div class="actions">
-			<button class="btn-custom" onclick="location.href='home.do'">홈으로</button>
+			<button class="button" onclick="location.href='home.do'">홈으로</button>
 			<button class="btn-custom" onclick="location.href='travel.do'">여행지
 				추천</button>
 		</div>

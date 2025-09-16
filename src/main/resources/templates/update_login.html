@@ -1,7 +1,10 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
+  	<!-- 공통 스타일 -->
+	<th:block th:replace="~{fragments/styles :: commonStyles}"></th:block>
   <title>회원정보 수정</title>
 
   <!-- Bootstrap 5 -->
@@ -70,43 +73,44 @@
   </style>
 </head>
 <body>
+  <div class="d-flex flex-column align-items-center">    
+    <!-- 제목--> 
+    <div class="title-box">회원정보 수정</div>
+    <div class="container">
+      <div class="form-wrapper">
 
-  <div class="container">
-    <div class="form-wrapper">
-      <div class="form-title">회원정보 수정</div>
+        <!-- 로그인된 사용자 있을 경우 -->
+        <div th:if="${loginUser != null}">
+          <form th:action="@{/updateProfile.do}" method="post">
+            <!-- hidden fields -->
+            <input type="hidden" name="loginId" th:value="${loginUser.loginId}" />
+            <input type="hidden" name="userId" th:value="${loginUser.userId}" />
+            <input type="hidden" name="userPassword" th:value="${loginUser.userPassword}" />
 
-      <!-- 로그인된 사용자 있을 경우 -->
-      <div th:if="${loginUser != null}">
-        <form th:action="@{/updateProfile.do}" method="post">
-          <!-- hidden fields -->
-          <input type="hidden" name="loginId" th:value="${loginUser.loginId}" />
-          <input type="hidden" name="userId" th:value="${loginUser.userId}" />
-          <input type="hidden" name="userPassword" th:value="${loginUser.userPassword}" />
+            <!-- 닉네임 입력 -->
+            <div class="mb-3">
+              <label for="userNickName" class="form-label">닉네임</label>
+              <input type="text" id="userNickName" name="userNickName"
+                    th:value="${loginUser.userNickName}"
+                    class="form-control" required />
+            </div>
 
-          <!-- 닉네임 입력 -->
-          <div class="mb-3">
-            <label for="userNickName" class="form-label">닉네임</label>
-            <input type="text" id="userNickName" name="userNickName"
-                   th:value="${loginUser.userNickName}"
-                   class="form-control" required />
-          </div>
+            <!-- 버튼 -->
+            <div class="d-grid">
+              <button type="submit" class="button bg-primary text-white">정보 수정</button>
+            </div> 
+          </form>
+        </div>
 
-          <!-- 버튼 -->
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary">정보 수정</button>
-          </div>
-        </form>
+        <!-- 로그인 실패 시 -->
+        <div th:if="${loginUser == null}" class="alert alert-danger mt-3">
+          사용자 정보를 불러오는 데 실패했습니다.
+        </div>
+
+        <!-- 메시지 출력 -->
+        <div th:if="${message != null}" class="alert alert-info mt-3" th:text="${message}"></div>
       </div>
-
-      <!-- 로그인 실패 시 -->
-      <div th:if="${loginUser == null}" class="alert alert-danger mt-3">
-        사용자 정보를 불러오는 데 실패했습니다.
-      </div>
-
-      <!-- 메시지 출력 -->
-      <div th:if="${message != null}" class="alert alert-info mt-3" th:text="${message}"></div>
     </div>
   </div>
-
 </body>
 </html>

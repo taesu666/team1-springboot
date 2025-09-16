@@ -19,26 +19,22 @@
 	<!-- 헤더 -->
 	<div th:replace="fragments/header :: headerFragment"></div>
 
-	<div class="col-12 d-flex flex-column align-items-center">
+	<div class="col-12 d-flex flex-column align-items-center gap-3">
 		<!-- 로그인 창 -->
-		<H2>사주세요:로그인</H2>
+		<div class="title-box">로그인</div>
 
+		<form name="login" method="post" action="/doLogin.do" class=" col-4 d-flex flex-column align-items-center p-3 gap-3"> 
 
-		<form name="login" method="post" action="/doLogin.do"
-			class="col-4 d-flex flex-column border border-primary align-items-center p-3 gap-3 fs-1">
-
-			<div class="col-4 d-flex flex-row border border-primary">
-	<input type="text" placeholder="아이디를 입력하세요" name="userId" th:value="${vo.userId ?: ''}" />
-
+			<div class="d-flex flex-row">
+				<input type="text" placeholder="아이디를 입력하세요" name="userId" th:value="${vo.userId ?: ''}" />
 			</div>
 
-			<div class="col-4 d-flex flex-row border border-primary">
-<input type="text" placeholder="비밀번호를 입력하세요" name="userPassword" th:value="${vo.userPassword ?: ''}" />
-
+			<div class="d-flex flex-row">
+				<input type="text" placeholder="비밀번호를 입력하세요" name="userPassword" th:value="${vo.userPassword ?: ''}" />
 			</div>
 
-			<div class="col-3 d-flex flex-row border border-primary">
-				<input type="submit" value="로그인" class="w-100">
+			<div class="d-flex flex-row">
+				<input type="submit" value="로그인" class="submit">
 			</div>
 		</form>
 

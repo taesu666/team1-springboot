@@ -22,24 +22,24 @@
 		<div class="col-12 d-flex flex-column align-items-center gap-3"> 
 			
 			<!-- 로그인 창 -->
-			<div class="title-box border border-primary">회원가입</div>
+			<div class="title-box">회원가입</div>
 
-			<form name="register" method="post" action="/insertLogin.do" class="col-4 d-flex flex-column border border-primary align-items-center p-3 gap-3 fs-1">
+			<form name="register" method="post" action="/insertLogin.do" class="col-4 d-flex flex-column align-items-center p-3 gap-3">
 				
-				<div class="d-flex flex-row border border-primary">				
+				<div class="d-flex flex-row">				
 					<input type="text" placeholder="아이디를 입력하세요" name="userId" th:value="${vo.userId}">
 				</div>
 
-				<div class="d-flex flex-row border border-primary">	
+				<div class="d-flex flex-row">	
 					<input type="text" placeholder="비밀번호를 입력하세요" name="userPassword" th:value="${vo.userPassword}">
 				</div>
 
-				<div class="d-flex flex-row border border-primary">	
+				<div class="d-flex flex-row">	
 					<input type="text" placeholder="닉네임을 입력하세요" name="userNickName" th:value="${vo.userNickName}">
 				</div>
 
-				<div class="d-flex flex-row border border-primary">	
-					<input type="submit" value="저장">
+				<div class="d-flex flex-row">	
+					<input type="submit" value="저장" class="submit">
 				</div>
 			</form>
 			

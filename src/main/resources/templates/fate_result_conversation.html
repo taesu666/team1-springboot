@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
+  <!-- 공통 스타일 -->
+	<th:block th:replace="~{fragments/styles :: commonStyles}"></th:block>
   <title>사주 결과</title>
 
   <!-- Bootstrap -->
@@ -32,6 +34,7 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
       padding: 24px;
       margin-bottom: 24px;
+      width: 100%;
     }
 
     .progress {
@@ -65,86 +68,87 @@
 
 <div class="page-container">
 
-  <!-- 제목 -->
-  <h2 class="text-center mb-4 fw-bold">🔮 사주 결과</h2>
+  <div class="d-flex flex-column align-items-center">    
+    <!-- 제목--> 
+    <div class="title-box">사주 목록 상세</div>
 
-  <!-- 사용자 정보 및 총평 -->
-  <div class="card-custom d-flex justify-content-between align-items-center">
-    <div class="h5 mb-0">👤 <span th:text="${resultVO.userName}">이름</span></div>
-    <div>총평: <strong th:text="${resultVO.total}">0</strong></div>
-  </div>
-
-  <!-- 오행 분포 -->
-  <div class="card-custom">
-    <h5 class="mb-3 fw-bold">🌱 오행 분포</h5>
-
-    <div class="mb-3">
-      <div class="d-flex justify-content-between mb-1"><div>🌳 목(木)</div><div><span id="val-tree" th:text="${resultVO.tree}">0</span></div></div>
-      <div class="progress"><div id="progress-tree" class="progress-bar bg-success" style="width: 0%"></div></div>
+    <!-- 사용자 정보 및 총평 -->
+    <div class="card-custom d-flex justify-content-between align-items-center">
+      <div class="h5 mb-0">👤 <span th:text="${resultVO.userName}">이름</span></div>
+      <div>총평: <strong th:text="${resultVO.total}">0</strong></div>
     </div>
 
-    <div class="mb-3">
-      <div class="d-flex justify-content-between mb-1"><div>🔥 화(火)</div><div><span id="val-fire" th:text="${resultVO.fire}">0</span></div></div>
-      <div class="progress"><div id="progress-fire" class="progress-bar bg-danger" style="width: 0%"></div></div>
-    </div>
+    <!-- 오행 분포 -->
+    <div class="card-custom">
+      <h5 class="mb-3 fw-bold">🌱 오행 분포</h5>
 
-    <div class="mb-3">
-      <div class="d-flex justify-content-between mb-1"><div>⛰️ 토(土)</div><div><span id="val-soil" th:text="${resultVO.soil}">0</span></div></div>
-      <div class="progress"><div id="progress-soil" class="progress-bar bg-warning" style="width: 0%"></div></div>
-    </div>
-
-    <div class="mb-3">
-      <div class="d-flex justify-content-between mb-1"><div>⚙️ 금(金)</div><div><span id="val-steel" th:text="${resultVO.steel}">0</span></div></div>
-      <div class="progress"><div id="progress-steel" class="progress-bar bg-info" style="width: 0%"></div></div>
-    </div>
-
-    <div>
-      <div class="d-flex justify-content-between mb-1"><div>💧 수(水)</div><div><span id="val-water" th:text="${resultVO.water}">0</span></div></div>
-      <div class="progress"><div id="progress-water" class="progress-bar bg-primary" style="width: 0%"></div></div>
-    </div>
-  </div>
-
-  <!-- 운세 선택 -->
-  <div class="card-custom">
-    <label for="fateOption" class="form-label fw-bold">🔎 운세 항목 선택</label>
-    <select id="fateOption" class="form-select mb-3" onchange="handleOnChange(this)">
-      <option value="love">연애운</option>
-      <option value="health">건강운</option>
-      <option value="money">재물운</option>
-      <option value="job">직업운</option>
-    </select>
-    <div class="border rounded p-3 bg-light" id="detail" th:text="${resultVO.love}">내용</div>
-  </div>
-
-  <!-- 댓글 목록 -->
-  <div class="card-custom">
-    <h5 class="mb-3">💬 댓글 목록</h5>
-    <div th:each="c : ${result}" class="comment-item">
-      <strong th:text="${c.userNickName}">사용자</strong> :
-      <span th:text="${c.content}">댓글 내용</span>
-    </div>
-    <div th:if="${#lists.isEmpty(result)}" class="text-muted">등록된 댓글이 없습니다.</div>
-  </div>
-
-  <!-- 댓글 작성 -->
-  <div class="card-custom">
-    <h5 class="mb-3">✍️ 댓글 작성</h5>
-    <form id="conversation_form" th:action="@{/insert_fate_conversation.do}" method="post">
-      <input type="hidden" name="targetId" th:value="${resultVO.resultFateId}" />
-      <input type="hidden" name="userNickName" th:value="${userNickName}" />
       <div class="mb-3">
-        <label for="content" class="form-label">내용</label>
-        <textarea name="content" id="content" rows="3" class="form-control" required></textarea>
+        <div class="d-flex justify-content-between mb-1"><div>🌳 목(木)</div><div><span id="val-tree" th:text="${resultVO.tree}">0</span></div></div>
+        <div class="progress"><div id="progress-tree" class="progress-bar bg-success" style="width: 0%"></div></div>
       </div>
-      <button type="submit" class="btn btn-custom">댓글 등록</button>
-    </form>
-  </div>
 
-  <!-- 이동 버튼 -->
-  <div class="d-flex justify-content-between mt-4">
-    <a href="/fate_list.do" class="btn btn-outline-secondary">목록으로 가기</a>
-  </div>
+      <div class="mb-3">
+        <div class="d-flex justify-content-between mb-1"><div>🔥 화(火)</div><div><span id="val-fire" th:text="${resultVO.fire}">0</span></div></div>
+        <div class="progress"><div id="progress-fire" class="progress-bar bg-danger" style="width: 0%"></div></div>
+      </div>
 
+      <div class="mb-3">
+        <div class="d-flex justify-content-between mb-1"><div>⛰️ 토(土)</div><div><span id="val-soil" th:text="${resultVO.soil}">0</span></div></div>
+        <div class="progress"><div id="progress-soil" class="progress-bar bg-warning" style="width: 0%"></div></div>
+      </div>
+
+      <div class="mb-3">
+        <div class="d-flex justify-content-between mb-1"><div>⚙️ 금(金)</div><div><span id="val-steel" th:text="${resultVO.steel}">0</span></div></div>
+        <div class="progress"><div id="progress-steel" class="progress-bar bg-info" style="width: 0%"></div></div>
+      </div>
+
+      <div>
+        <div class="d-flex justify-content-between mb-1"><div>💧 수(水)</div><div><span id="val-water" th:text="${resultVO.water}">0</span></div></div>
+        <div class="progress"><div id="progress-water" class="progress-bar bg-primary" style="width: 0%"></div></div>
+      </div>
+    </div>
+
+    <!-- 운세 선택 -->
+    <div class="card-custom">
+      <label for="fateOption" class="form-label fw-bold">🔎 운세 항목 선택</label>
+      <select id="fateOption" class="form-select mb-3" onchange="handleOnChange(this)">
+        <option value="love">연애운</option>
+        <option value="health">건강운</option>
+        <option value="money">재물운</option>
+        <option value="job">직업운</option>
+      </select>
+      <div class="border rounded p-3 bg-light" id="detail" th:text="${resultVO.love}">내용</div>
+    </div>
+
+    <!-- 댓글 목록 -->
+    <div class="card-custom">
+      <h5 class="mb-3">💬 댓글 목록</h5>
+      <div th:each="c : ${result}" class="comment-item">
+        <strong th:text="${c.userNickName}">사용자</strong> :
+        <span th:text="${c.content}">댓글 내용</span>
+      </div>
+      <div th:if="${#lists.isEmpty(result)}" class="text-muted">등록된 댓글이 없습니다.</div>
+    </div>
+
+    <!-- 댓글 작성 -->
+    <div class="card-custom">
+      <h5 class="mb-3">✍️ 댓글 작성</h5>
+      <form id="conversation_form" th:action="@{/insert_fate_conversation.do}" method="post">
+        <input type="hidden" name="targetId" th:value="${resultVO.resultFateId}" />
+        <input type="hidden" name="userNickName" th:value="${userNickName}" />
+        <div class="mb-3">
+          <label for="content" class="form-label">내용</label>
+          <textarea name="content" id="content" rows="3" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-custom">댓글 등록</button>
+      </form>
+    </div>
+
+    <!-- 이동 버튼 -->
+    <div class="d-flex justify-content-between mt-4">
+      <a href="/fate_list.do" class="btn btn-outline-secondary">목록으로 가기</a>
+    </div>
+  </div>
 </div>
 
 <script th:inline="javascript">

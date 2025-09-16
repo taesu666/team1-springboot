@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -66,6 +67,15 @@ public class CoupleController {
 	    return "/couple_list";  
 	}
     	    
+	// 사주 삭제
+	@RequestMapping("/couple_delete.do")
+	public String delete(@RequestParam("resultCoupleId") int resultCoupleId, HttpServletRequest req) throws Exception {
+	    cdao.deleteCouple(resultCoupleId);
 
+	    List<CoupleResultVO> list = cdao.getCoupleList();
+	    req.setAttribute("result", list);
+
+	    return "/couple_list";
+	}
 
 }

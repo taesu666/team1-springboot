@@ -52,6 +52,7 @@
 
     .comment-box {
       margin-top: 30px;
+      width: 100%;
     }
 
     .comment-item {
@@ -81,6 +82,16 @@
     .btn-custom:hover {
       background: #a61e4d;
     }
+
+    .kv {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .kvB {
+      font-size: 1.1rem;
+      color: var(--bs-dark)
+    }
   </style>
 </head>
 <body>
@@ -89,58 +100,60 @@
   <div th:replace="fragments/header :: headerFragment"></div>
 
   <div class="page-container">
-    <!-- 제목 -->
-    <div class="title">궁합 결과 상세</div>
+    <div class="d-flex flex-column align-items-center">    
+      <!-- 제목--> 
+      <div class="title-box">궁합 결과 상세</div>
 
-    <!-- 궁합 결과 카드 -->
-    <div class="card p-4 mb-4">
-      <div class="d-flex justify-content-between flex-wrap">
-        <p><strong>당신 이름:</strong> <span th:text="${coupleResultVO.userName}">홍길동</span></p>
-        <p><strong>상대 이름:</strong> <span th:text="${coupleResultVO.partnerName}">김철수</span></p>
-      </div>
-      <p><strong>궁합 점수:</strong> <span th:text="${coupleResultVO.score}">85</span>점</p>
-      <hr>
-      <p><strong>분석 결과:</strong></p>
-      <div class="detail-box" th:text="${coupleResultVO.total}">분석 내용</div>
-
-      <!-- 상세 선택 -->
-      <div class="mt-4">
-        <label for="coupleDetail" class="form-label fw-semibold">세부 항목 선택</label>
-        <select name="coupleDetail" id="coupleDetail" class="form-select" onchange="handleOnChange(this)">
-          <option value="love">애정운</option>
-          <option value="partner">동업운</option>
-        </select>
-        <div id="detailResult" class="detail-box">세부 결과 내용</div>
-      </div>
-    </div>
-
-    <!-- 댓글 목록 -->
-    <div class="comment-box">
-      <h5 class="mb-3">💬 댓글 목록</h5>
-
-      <div th:each="c : ${result}" class="comment-item">
-        <strong th:text="${c.userNickName}">사용자</strong> :
-        <span th:text="${c.content}">댓글 내용</span>
-      </div>
-
-      <!-- 댓글 입력 폼 -->
-      <form id="conversation_form" th:action="@{/insert_couple_conversation.do}" method="post" class="mt-4">
-        <input type="hidden" name="targetId" th:value="${coupleResultVO.resultCoupleId}" />
-        <input type="hidden" name="userNickName" th:value="${userNickName}" />
-
-        <div class="mb-3">
-          <label for="content" class="form-label">댓글 작성</label>
-          <textarea name="content" id="content" rows="3" class="form-control" required></textarea>
+      <!-- 궁합 결과 카드 -->
+      <div class="card p-4 mb-4">
+        <div class="d-flex justify-content-between flex-wrap">
+          <p><strong>당신 이름:</strong> <span th:text="${coupleResultVO.userName}">홍길동</span></p>
+          <p><strong>상대 이름:</strong> <span th:text="${coupleResultVO.partnerName}">김철수</span></p>
         </div>
-        <button type="submit" class="btn btn-custom">댓글 등록</button>
-      </form>
-    </div>
+        <p><strong>궁합 점수:</strong> <span th:text="${coupleResultVO.score}">85</span>점</p>
+        <hr>
+        <p><strong>분석 결과:</strong></p>
+        <div class="detail-box kvB" th:text="${coupleResultVO.total}">분석 내용</div>
 
-    <!-- 버튼 영역 -->
-    <div class="actions">
-      <button class="btn btn-outline-secondary" onclick="location.href='/couple_list.do'">목록으로 가기</button>
+        <!-- 상세 선택 -->
+        <div class="mt-4">
+          <label for="coupleDetail" class="form-label fw-semibold">세부 항목 선택</label>
+          <select name="coupleDetail" id="coupleDetail" class="form-select" onchange="handleOnChange(this)">
+            <option value="love">애정운</option>
+            <option value="partner">동업운</option>
+          </select>
+          <div id="detailResult" class="detail-box kvB">세부 결과 내용</div>
+        </div>
+      </div>
+
+      <!-- 댓글 목록 -->
+      <div class="comment-box">
+        <h5 class="mb-3">💬 댓글 목록</h5>
+
+        <div th:each="c : ${result}" class="comment-item">
+          <strong th:text="${c.userNickName}">사용자</strong> :
+          <span th:text="${c.content}">댓글 내용</span>
+        </div>
+
+        <!-- 댓글 입력 폼 -->
+        <form id="conversation_form" th:action="@{/insert_couple_conversation.do}" method="post" class="mt-4">
+          <input type="hidden" name="targetId" th:value="${coupleResultVO.resultCoupleId}" />
+          <input type="hidden" name="userNickName" th:value="${userNickName}" />
+
+          <div class="mb-3">
+            <label for="content" class="form-label">댓글 작성</label>
+            <textarea name="content" id="content" rows="3" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="button bg-primary text-white">댓글 등록</button>
+        </form>
+      </div>
+
+      <!-- 버튼 영역 -->
+      <div class="actions">
+        <button class="button" onclick="location.href='/couple_list.do'">목록으로 가기</button>
+      </div>
     </div>
-  </div>
+  </div> 
 
   <!-- 운세 세부 항목 스크립트 -->
   <script th:inline="javascript">

@@ -17,10 +17,10 @@
   <!-- 헤더 -->
   <div th:replace="fragments/header :: headerFragment"></div>
 
-  <div class="container py-5">
-    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+  <div class="container mt-0 d-flex flex-column align-items-center gap-3">
+    <div class="title-box">사주 결과</div>
+    <div class="card shadow-sm mx-auto" style="width: 600px;">
       <div class="card-body">
-        <h2 class="h5 mb-4 fw-bold text-center">사주 입력</h2>
 
         <form name="form1" method="post" action="insert_fate_input.do" class="needs-validation" novalidate>
           
@@ -76,8 +76,8 @@
 
           <!-- 버튼 -->
           <div class="d-flex justify-content-center gap-2">
-            <button type="submit" class="btn btn-primary px-4">저장</button>
-            <button type="reset" class="btn btn-outline-secondary px-4">취소</button>
+            <button type="submit" class="button bg-primary text-white">저장</button>
+            <button type="reset" class="button">취소</button>
           </div>
         </form>
       </div>
