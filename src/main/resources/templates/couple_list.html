@@ -1,49 +1,97 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="css/conversation.css" type="text/css"
-	media="screen" />
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-	crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <title>궁합 결과 리스트</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>궁합 결과 리스트</title>
+  <!-- Bootstrap 5 CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Optional: 기존 CSS/JS -->
+  <link rel="stylesheet" href="css/conversation.css" type="text/css" media="screen" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <style>
+    .table thead th { white-space: nowrap; }
+    .col-id { width: 120px; }
+  </style>
 </head>
 
 <body>
-	<div align="center">
-		<H2>궁합 결과 리스트</H2>
-		<HR>
-		<form>
-			<P>
-			<table border="1">
-				<tr>
-					<th>번호</th>
-					<th>이 름</th>
-					<th>파트너 이름</th>
-				</tr>
+  <!-- 헤더 프래그먼트 -->
+<!-- 예: couple_list.html 등 -->
+<div th:replace="fragments/header :: headerFragment"></div>
 
-				<tr th:each="vo : ${result}">
-					<td><a th:href="|javascript:check(${vo.resultCoupleId})|" th:text="${vo.resultCoupleId}"></a></td>
-					<td th:text="${vo.userName}"></td>
-					<td th:text="${vo.partnerName}"></td>
-					<td>
-					<button type="button" class="btn btn-secondary" th:onclick="|location.href='/couple_delete.do?resultCoupleId=${vo.resultCoupleId}'|">삭제</button>
-					</td>
-				</tr>
 
-			</table>
-		</form>
-		<div class="mt-4 d-flex justify-content-between">
-	        <button type="button" class="btn btn-secondary" onclick="location.href='/result_select.do'">이전 화면으로</button>
-	    </div>
-	</div>
+  <div class="container py-4">
+    <!-- 제목 및 버튼 -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="h4 m-0">궁합 결과 리스트</h2>
+      <a href="/result_select.do" class="btn btn-outline-secondary">이전 화면으로</a>
+    </div>
 
-<script type="text/javascript">
-		function check(resultcoupleID) {
-			document.location.href = "couple_result_conversation.do?resultCoupleId=" + resultcoupleID;
-		}
-	</script>
+    <!-- 요약 정보 -->
+    <div class="mb-3 text-secondary">
+      총 <span class="badge text-bg-success" th:text="${#lists.size(result)}">0</span> 건
+    </div>
 
+    <!-- 리스트 카드 -->
+    <div class="card shadow-sm">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="col-id">번호</th>
+                <th>이름</th>
+                <th>파트너 이름</th>
+                <th>점수</th>
+                <th class="text-end">동작</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="vo : ${result}">
+                <!-- 번호 (상세 이동 링크) -->
+                <td>
+                  <a class="text-decoration-none fw-semibold"
+                     th:href="@{/couple_result_conversation.do(resultCoupleId=${vo.resultCoupleId})}"
+                     th:text="${vo.resultCoupleId}">1</a>
+                </td>
+                <td th:text="${vo.userName}">사용자</td>
+                <td th:text="${vo.partnerName}">파트너</td>
+                <td th:text="${vo.score}">50</td>
+                <!-- 삭제 버튼 -->
+                <td class="text-end">
+                  <button type="button"
+                          class="btn btn-outline-danger btn-sm"
+                          th:attr="data-id=${vo.resultCoupleId}">
+                    삭제
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 데이터 없을 때 -->
+              <tr th:if="${#lists.isEmpty(result)}">
+                <td colspan="4" class="text-center text-secondary py-4">
+                  데이터가 없습니다.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 삭제 확인 스크립트 -->
+  <script>
+    $(document).on('click', '.btn.btn-outline-danger', function () {
+      const id = $(this).data('id');
+      if (confirm(`정말 삭제할까요? (ID: ${id})`)) {
+        location.href = `/couple_delete.do?resultCoupleId=${id}`;
+      }
+    });
+  </script>
 </body>
 </html>
